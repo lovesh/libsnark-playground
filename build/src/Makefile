@@ -68,18 +68,6 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -112,6 +100,18 @@ install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -201,6 +201,48 @@ test-gadget/fast:
 	cd /home/lovesh/dev/libsnark-tutorial/build && $(MAKE) -f src/CMakeFiles/test-gadget.dir/build.make src/CMakeFiles/test-gadget.dir/build
 .PHONY : test-gadget/fast
 
+# Convenience name for target.
+src/CMakeFiles/factorisation.dir/rule:
+	cd /home/lovesh/dev/libsnark-tutorial/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/factorisation.dir/rule
+.PHONY : src/CMakeFiles/factorisation.dir/rule
+
+# Convenience name for target.
+factorisation: src/CMakeFiles/factorisation.dir/rule
+
+.PHONY : factorisation
+
+# fast build rule for target.
+factorisation/fast:
+	cd /home/lovesh/dev/libsnark-tutorial/build && $(MAKE) -f src/CMakeFiles/factorisation.dir/build.make src/CMakeFiles/factorisation.dir/build
+.PHONY : factorisation/fast
+
+factorisation.o: factorisation.cpp.o
+
+.PHONY : factorisation.o
+
+# target to build an object file
+factorisation.cpp.o:
+	cd /home/lovesh/dev/libsnark-tutorial/build && $(MAKE) -f src/CMakeFiles/factorisation.dir/build.make src/CMakeFiles/factorisation.dir/factorisation.cpp.o
+.PHONY : factorisation.cpp.o
+
+factorisation.i: factorisation.cpp.i
+
+.PHONY : factorisation.i
+
+# target to preprocess a source file
+factorisation.cpp.i:
+	cd /home/lovesh/dev/libsnark-tutorial/build && $(MAKE) -f src/CMakeFiles/factorisation.dir/build.make src/CMakeFiles/factorisation.dir/factorisation.cpp.i
+.PHONY : factorisation.cpp.i
+
+factorisation.s: factorisation.cpp.s
+
+.PHONY : factorisation.s
+
+# target to generate assembly for a file
+factorisation.cpp.s:
+	cd /home/lovesh/dev/libsnark-tutorial/build && $(MAKE) -f src/CMakeFiles/factorisation.dir/build.make src/CMakeFiles/factorisation.dir/factorisation.cpp.s
+.PHONY : factorisation.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -289,14 +331,18 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... main"
 	@echo "... edit_cache"
 	@echo "... install/local"
 	@echo "... test"
 	@echo "... test-gadget"
+	@echo "... install"
+	@echo "... factorisation"
 	@echo "... rebuild_cache"
+	@echo "... factorisation.o"
+	@echo "... factorisation.i"
+	@echo "... factorisation.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

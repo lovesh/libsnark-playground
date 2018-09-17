@@ -9,7 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/snark.dir/gadgetlib1/constraint_profiling.cpp.o"
   "CMakeFiles/snark.dir/gadgetlib2/adapters.cpp.o"
   "CMakeFiles/snark.dir/gadgetlib2/constraint.cpp.o"
-  "CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o"
+  "CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o"
   "CMakeFiles/snark.dir/gadgetlib2/infrastructure.cpp.o"
   "CMakeFiles/snark.dir/gadgetlib2/integration.cpp.o"
   "CMakeFiles/snark.dir/gadgetlib2/pp.cpp.o"

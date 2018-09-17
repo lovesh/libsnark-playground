@@ -4707,12 +4707,6 @@
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/examples/simple_example.hpp">
 			<Option target="gadgetlib2_integration_test"/>
 		</Unit>
-		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/gadget.cpp">
-			<Option target="snark"/>
-		</Unit>
-		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/gadget.hpp">
-			<Option target="snark"/>
-		</Unit>
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/infrastructure.cpp">
 			<Option target="snark"/>
 		</Unit>
@@ -4735,6 +4729,9 @@
 			<Option target="snark"/>
 		</Unit>
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/protoboard.hpp">
+			<Option target="snark"/>
+		</Unit>
+		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/test-gadget.cpp">
 			<Option target="snark"/>
 		</Unit>
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/tests/adapters_UTEST.cpp">
@@ -4898,10 +4895,16 @@
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/zk_proof_systems/zksnark/ram_zksnark/tests/test_ram_zksnark.cpp">
 			<Option target="zk_proof_systems_ram_zksnark_test"/>
 		</Unit>
+		<Unit filename="/home/lovesh/dev/libsnark-tutorial/src/factorisation.cpp">
+			<Option target="main"/>
+		</Unit>
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/src/main.cpp">
 			<Option target="main"/>
 		</Unit>
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/src/test-gadget.cpp">
+			<Option target="test-gadget"/>
+		</Unit>
+		<Unit filename="/home/lovesh/dev/libsnark-tutorial/src/test-gadget.hpp">
 			<Option target="test-gadget"/>
 		</Unit>
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/src/test.cpp">

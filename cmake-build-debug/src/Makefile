@@ -201,6 +201,33 @@ test-gadget/fast:
 	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/test-gadget.dir/build.make src/CMakeFiles/test-gadget.dir/build
 .PHONY : test-gadget/fast
 
+factorisation.o: factorisation.cpp.o
+
+.PHONY : factorisation.o
+
+# target to build an object file
+factorisation.cpp.o:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/factorisation.cpp.o
+.PHONY : factorisation.cpp.o
+
+factorisation.i: factorisation.cpp.i
+
+.PHONY : factorisation.i
+
+# target to preprocess a source file
+factorisation.cpp.i:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/factorisation.cpp.i
+.PHONY : factorisation.cpp.i
+
+factorisation.s: factorisation.cpp.s
+
+.PHONY : factorisation.s
+
+# target to generate assembly for a file
+factorisation.cpp.s:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/factorisation.cpp.s
+.PHONY : factorisation.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -297,6 +324,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... test"
 	@echo "... test-gadget"
+	@echo "... factorisation.o"
+	@echo "... factorisation.i"
+	@echo "... factorisation.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

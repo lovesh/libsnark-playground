@@ -5,68 +5,68 @@ src/CMakeFiles/test-gadget.dir/test-gadget.cpp.o
  ../depends/libsnark/depends/ate-pairing/include/bn.h
  ../depends/libsnark/depends/ate-pairing/include/zm.h
  ../depends/libsnark/depends/ate-pairing/include/zm2.h
- ../depends/libsnark/depends/libff/libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/alt_bn128/alt_bn128_g2.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/alt_bn128/alt_bn128_init.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/alt_bn128/alt_bn128_pairing.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/bn128/bn128_g1.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/bn128/bn128_g2.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/bn128/bn128_gt.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/bn128/bn128_init.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/bn128/bn128_pairing.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/bn128/bn128_pp.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/curve_utils.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/curve_utils.tcc
- ../depends/libsnark/depends/libff/libff/algebra/curves/edwards/edwards_g1.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/edwards/edwards_g2.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/edwards/edwards_init.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/edwards/edwards_pairing.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/edwards/edwards_pp.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt4/mnt4_g1.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt4/mnt4_g2.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt4/mnt4_init.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt4/mnt4_pairing.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt4/mnt4_pp.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt46_common.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt6/mnt6_g1.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt6/mnt6_g2.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt6/mnt6_init.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt6/mnt6_pairing.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt6/mnt6_pp.hpp
- ../depends/libsnark/depends/libff/libff/algebra/curves/public_params.hpp
- ../depends/libsnark/depends/libff/libff/algebra/exponentiation/exponentiation.hpp
- ../depends/libsnark/depends/libff/libff/algebra/exponentiation/exponentiation.tcc
- ../depends/libsnark/depends/libff/libff/algebra/fields/bigint.hpp
- ../depends/libsnark/depends/libff/libff/algebra/fields/bigint.tcc
- ../depends/libsnark/depends/libff/libff/algebra/fields/field_utils.hpp
- ../depends/libsnark/depends/libff/libff/algebra/fields/field_utils.tcc
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp.hpp
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp.tcc
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp12_2over3over2.hpp
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp12_2over3over2.tcc
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp2.hpp
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp2.tcc
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp3.hpp
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp3.tcc
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp4.hpp
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp4.tcc
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp6_2over3.hpp
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp6_2over3.tcc
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp6_3over2.hpp
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp6_3over2.tcc
- ../depends/libsnark/depends/libff/libff/algebra/fields/fp_aux.tcc
- ../depends/libsnark/depends/libff/libff/algebra/scalar_multiplication/multiexp.hpp
- ../depends/libsnark/depends/libff/libff/algebra/scalar_multiplication/multiexp.tcc
- ../depends/libsnark/depends/libff/libff/algebra/scalar_multiplication/wnaf.hpp
- ../depends/libsnark/depends/libff/libff/algebra/scalar_multiplication/wnaf.tcc
- ../depends/libsnark/depends/libff/libff/common/default_types/ec_pp.hpp
- ../depends/libsnark/depends/libff/libff/common/double.hpp
- ../depends/libsnark/depends/libff/libff/common/profiling.hpp
- ../depends/libsnark/depends/libff/libff/common/serialization.hpp
- ../depends/libsnark/depends/libff/libff/common/serialization.tcc
- ../depends/libsnark/depends/libff/libff/common/utils.hpp
- ../depends/libsnark/depends/libff/libff/common/utils.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_g2.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_init.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_pairing.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/bn128_g1.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/bn128_g2.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/bn128_gt.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/bn128_init.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/bn128_pairing.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/bn128_pp.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/curve_utils.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/curve_utils.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/edwards/edwards_g1.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/edwards/edwards_g2.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/edwards/edwards_init.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/edwards/edwards_pairing.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/edwards/edwards_pp.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt4/mnt4_g1.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt4/mnt4_g2.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt4/mnt4_init.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt4/mnt4_pairing.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt4/mnt4_pp.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt46_common.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt6/mnt6_g1.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt6/mnt6_g2.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt6/mnt6_init.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt6/mnt6_pairing.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt6/mnt6_pp.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/curves/public_params.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/exponentiation/exponentiation.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/exponentiation/exponentiation.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/bigint.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/bigint.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/field_utils.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/field_utils.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp12_2over3over2.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp12_2over3over2.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp2.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp2.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp3.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp3.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp4.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp4.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp6_2over3.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp6_2over3.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp6_3over2.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp6_3over2.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp_aux.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/scalar_multiplication/multiexp.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/scalar_multiplication/multiexp.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/scalar_multiplication/wnaf.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/algebra/scalar_multiplication/wnaf.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/common/default_types/ec_pp.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/common/double.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/common/profiling.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/common/serialization.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/common/serialization.tcc
+ ../depends/libsnark/depends/libff/libff/../libff/common/utils.hpp
+ ../depends/libsnark/depends/libff/libff/../libff/common/utils.tcc
  ../depends/libsnark/depends/libfqfft/libfqfft/evaluation_domain/domains/arithmetic_sequence_domain.hpp
  ../depends/libsnark/depends/libfqfft/libfqfft/evaluation_domain/domains/arithmetic_sequence_domain.tcc
  ../depends/libsnark/depends/libfqfft/libfqfft/evaluation_domain/domains/basic_radix2_domain.hpp
@@ -117,7 +117,7 @@ src/CMakeFiles/test-gadget.dir/test-gadget.cpp.o
  ../depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_ppzksnark/r1cs_ppzksnark.hpp
  ../depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_ppzksnark/r1cs_ppzksnark.tcc
  ../depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_ppzksnark/r1cs_ppzksnark_params.hpp
- /home/lovesh/dev/libsnark-tutorial/src/gadget.hpp
  /home/lovesh/dev/libsnark-tutorial/src/test-gadget.cpp
+ /home/lovesh/dev/libsnark-tutorial/src/test-gadget.hpp
  /home/lovesh/dev/libsnark-tutorial/src/util.hpp
  /usr/include/x86_64-linux-gnu/gmp.h

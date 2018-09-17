@@ -1339,6 +1339,19 @@ test-gadget/fast:
 	$(MAKE) -f src/CMakeFiles/test-gadget.dir/build.make src/CMakeFiles/test-gadget.dir/build
 .PHONY : test-gadget/fast
 
+#=============================================================================
+# Target rules for targets named factorisation
+
+# Build rule for target.
+factorisation: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 factorisation
+.PHONY : factorisation
+
+# fast build rule for target.
+factorisation/fast:
+	$(MAKE) -f src/CMakeFiles/factorisation.dir/build.make src/CMakeFiles/factorisation.dir/build
+.PHONY : factorisation/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1442,6 +1455,7 @@ help:
 	@echo "... main"
 	@echo "... test"
 	@echo "... test-gadget"
+	@echo "... factorisation"
 .PHONY : help
 
 

@@ -1875,33 +1875,6 @@ gadgetlib2/examples/simple_example.cpp.s:
 	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f depends/libsnark/libsnark/CMakeFiles/gadgetlib2_integration_test.dir/build.make depends/libsnark/libsnark/CMakeFiles/gadgetlib2_integration_test.dir/gadgetlib2/examples/simple_example.cpp.s
 .PHONY : gadgetlib2/examples/simple_example.cpp.s
 
-gadgetlib2/gadget.o: gadgetlib2/gadget.cpp.o
-
-.PHONY : gadgetlib2/gadget.o
-
-# target to build an object file
-gadgetlib2/gadget.cpp.o:
-	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f depends/libsnark/libsnark/CMakeFiles/snark.dir/build.make depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o
-.PHONY : gadgetlib2/gadget.cpp.o
-
-gadgetlib2/gadget.i: gadgetlib2/gadget.cpp.i
-
-.PHONY : gadgetlib2/gadget.i
-
-# target to preprocess a source file
-gadgetlib2/gadget.cpp.i:
-	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f depends/libsnark/libsnark/CMakeFiles/snark.dir/build.make depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.i
-.PHONY : gadgetlib2/gadget.cpp.i
-
-gadgetlib2/gadget.s: gadgetlib2/gadget.cpp.s
-
-.PHONY : gadgetlib2/gadget.s
-
-# target to generate assembly for a file
-gadgetlib2/gadget.cpp.s:
-	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f depends/libsnark/libsnark/CMakeFiles/snark.dir/build.make depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.s
-.PHONY : gadgetlib2/gadget.cpp.s
-
 gadgetlib2/infrastructure.o: gadgetlib2/infrastructure.cpp.o
 
 .PHONY : gadgetlib2/infrastructure.o
@@ -2009,6 +1982,33 @@ gadgetlib2/protoboard.s: gadgetlib2/protoboard.cpp.s
 gadgetlib2/protoboard.cpp.s:
 	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f depends/libsnark/libsnark/CMakeFiles/snark.dir/build.make depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/protoboard.cpp.s
 .PHONY : gadgetlib2/protoboard.cpp.s
+
+gadgetlib2/test-gadget.o: gadgetlib2/test-gadget.cpp.o
+
+.PHONY : gadgetlib2/test-gadget.o
+
+# target to build an object file
+gadgetlib2/test-gadget.cpp.o:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f depends/libsnark/libsnark/CMakeFiles/snark.dir/build.make depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o
+.PHONY : gadgetlib2/test-gadget.cpp.o
+
+gadgetlib2/test-gadget.i: gadgetlib2/test-gadget.cpp.i
+
+.PHONY : gadgetlib2/test-gadget.i
+
+# target to preprocess a source file
+gadgetlib2/test-gadget.cpp.i:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f depends/libsnark/libsnark/CMakeFiles/snark.dir/build.make depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.i
+.PHONY : gadgetlib2/test-gadget.cpp.i
+
+gadgetlib2/test-gadget.s: gadgetlib2/test-gadget.cpp.s
+
+.PHONY : gadgetlib2/test-gadget.s
+
+# target to generate assembly for a file
+gadgetlib2/test-gadget.cpp.s:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f depends/libsnark/libsnark/CMakeFiles/snark.dir/build.make depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.s
+.PHONY : gadgetlib2/test-gadget.cpp.s
 
 gadgetlib2/tests/adapters_UTEST.o: gadgetlib2/tests/adapters_UTEST.cpp.o
 
@@ -3300,9 +3300,6 @@ help:
 	@echo "... gadgetlib2/examples/simple_example.o"
 	@echo "... gadgetlib2/examples/simple_example.i"
 	@echo "... gadgetlib2/examples/simple_example.s"
-	@echo "... gadgetlib2/gadget.o"
-	@echo "... gadgetlib2/gadget.i"
-	@echo "... gadgetlib2/gadget.s"
 	@echo "... gadgetlib2/infrastructure.o"
 	@echo "... gadgetlib2/infrastructure.i"
 	@echo "... gadgetlib2/infrastructure.s"
@@ -3315,6 +3312,9 @@ help:
 	@echo "... gadgetlib2/protoboard.o"
 	@echo "... gadgetlib2/protoboard.i"
 	@echo "... gadgetlib2/protoboard.s"
+	@echo "... gadgetlib2/test-gadget.o"
+	@echo "... gadgetlib2/test-gadget.i"
+	@echo "... gadgetlib2/test-gadget.s"
 	@echo "... gadgetlib2/tests/adapters_UTEST.o"
 	@echo "... gadgetlib2/tests/adapters_UTEST.i"
 	@echo "... gadgetlib2/tests/adapters_UTEST.s"

@@ -52,7 +52,7 @@ zm.h
 gmpxx.h
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp
 vector
 -
 libff/algebra/curves/alt_bn128/alt_bn128_init.hpp
@@ -60,7 +60,7 @@ libff/algebra/curves/alt_bn128/alt_bn128_init.hpp
 libff/algebra/curves/curve_utils.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/alt_bn128/alt_bn128_g2.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_g2.hpp
 vector
 -
 libff/algebra/curves/alt_bn128/alt_bn128_init.hpp
@@ -68,7 +68,7 @@ libff/algebra/curves/alt_bn128/alt_bn128_init.hpp
 libff/algebra/curves/curve_utils.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/alt_bn128/alt_bn128_init.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_init.hpp
 libff/algebra/curves/public_params.hpp
 -
 libff/algebra/fields/fp.hpp
@@ -80,13 +80,13 @@ libff/algebra/fields/fp2.hpp
 libff/algebra/fields/fp6_3over2.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/alt_bn128/alt_bn128_pairing.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_pairing.hpp
 vector
 -
 libff/algebra/curves/alt_bn128/alt_bn128_init.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp
 libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp
 -
 libff/algebra/curves/alt_bn128/alt_bn128_g2.hpp
@@ -98,49 +98,49 @@ libff/algebra/curves/alt_bn128/alt_bn128_pairing.hpp
 libff/algebra/curves/public_params.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/bn128/bn128_g1.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/bn128_g1.hpp
 vector
 -
 depends/ate-pairing/include/bn.h
-../depends/libsnark/depends/libff/libff/algebra/curves/bn128/depends/ate-pairing/include/bn.h
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/depends/ate-pairing/include/bn.h
 libff/algebra/curves/bn128/bn128_init.hpp
 -
 libff/algebra/curves/curve_utils.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/bn128/bn128_g2.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/bn128_g2.hpp
 iostream
 -
 vector
 -
 depends/ate-pairing/include/bn.h
-../depends/libsnark/depends/libff/libff/algebra/curves/bn128/depends/ate-pairing/include/bn.h
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/depends/ate-pairing/include/bn.h
 libff/algebra/curves/bn128/bn128_init.hpp
 -
 libff/algebra/curves/curve_utils.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/bn128/bn128_gt.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/bn128_gt.hpp
 iostream
 -
 depends/ate-pairing/include/bn.h
-../depends/libsnark/depends/libff/libff/algebra/curves/bn128/depends/ate-pairing/include/bn.h
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/depends/ate-pairing/include/bn.h
 libff/algebra/fields/field_utils.hpp
 -
 libff/algebra/fields/fp.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/bn128/bn128_init.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/bn128_init.hpp
 depends/ate-pairing/include/bn.h
-../depends/libsnark/depends/libff/libff/algebra/curves/bn128/depends/ate-pairing/include/bn.h
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/depends/ate-pairing/include/bn.h
 libff/algebra/curves/public_params.hpp
 -
 libff/algebra/fields/fp.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/bn128/bn128_pairing.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/bn128_pairing.hpp
 depends/ate-pairing/include/bn.h
-../depends/libsnark/depends/libff/libff/algebra/curves/bn128/depends/ate-pairing/include/bn.h
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/depends/ate-pairing/include/bn.h
 libff/algebra/curves/bn128/bn128_g1.hpp
 -
 libff/algebra/curves/bn128/bn128_g2.hpp
@@ -148,7 +148,7 @@ libff/algebra/curves/bn128/bn128_g2.hpp
 libff/algebra/curves/bn128/bn128_gt.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/bn128/bn128_pp.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/bn128/bn128_pp.hpp
 libff/algebra/curves/bn128/bn128_g1.hpp
 -
 libff/algebra/curves/bn128/bn128_g2.hpp
@@ -162,7 +162,7 @@ libff/algebra/curves/bn128/bn128_pairing.hpp
 libff/algebra/curves/public_params.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/curve_utils.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/curve_utils.hpp
 cstdint
 -
 libff/algebra/fields/bigint.hpp
@@ -170,9 +170,9 @@ libff/algebra/fields/bigint.hpp
 libff/algebra/curves/curve_utils.tcc
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/curve_utils.tcc
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/curve_utils.tcc
 
-../depends/libsnark/depends/libff/libff/algebra/curves/edwards/edwards_g1.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/edwards/edwards_g1.hpp
 vector
 -
 libff/algebra/curves/curve_utils.hpp
@@ -180,7 +180,7 @@ libff/algebra/curves/curve_utils.hpp
 libff/algebra/curves/edwards/edwards_init.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/edwards/edwards_g2.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/edwards/edwards_g2.hpp
 iostream
 -
 vector
@@ -190,7 +190,7 @@ libff/algebra/curves/curve_utils.hpp
 libff/algebra/curves/edwards/edwards_init.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/edwards/edwards_init.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/edwards/edwards_init.hpp
 libff/algebra/curves/public_params.hpp
 -
 libff/algebra/fields/fp.hpp
@@ -200,13 +200,13 @@ libff/algebra/fields/fp3.hpp
 libff/algebra/fields/fp6_2over3.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/edwards/edwards_pairing.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/edwards/edwards_pairing.hpp
 vector
 -
 libff/algebra/curves/edwards/edwards_init.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/edwards/edwards_pp.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/edwards/edwards_pp.hpp
 libff/algebra/curves/edwards/edwards_g1.hpp
 -
 libff/algebra/curves/edwards/edwards_g2.hpp
@@ -218,7 +218,7 @@ libff/algebra/curves/edwards/edwards_pairing.hpp
 libff/algebra/curves/public_params.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt4/mnt4_g1.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt4/mnt4_g1.hpp
 vector
 -
 libff/algebra/curves/curve_utils.hpp
@@ -226,7 +226,7 @@ libff/algebra/curves/curve_utils.hpp
 libff/algebra/curves/mnt/mnt4/mnt4_init.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt4/mnt4_g2.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt4/mnt4_g2.hpp
 vector
 -
 libff/algebra/curves/curve_utils.hpp
@@ -234,7 +234,7 @@ libff/algebra/curves/curve_utils.hpp
 libff/algebra/curves/mnt/mnt4/mnt4_init.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt4/mnt4_init.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt4/mnt4_init.hpp
 libff/algebra/curves/mnt/mnt46_common.hpp
 -
 libff/algebra/curves/public_params.hpp
@@ -246,13 +246,13 @@ libff/algebra/fields/fp2.hpp
 libff/algebra/fields/fp4.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt4/mnt4_pairing.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt4/mnt4_pairing.hpp
 vector
 -
 libff/algebra/curves/mnt/mnt4/mnt4_init.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt4/mnt4_pp.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt4/mnt4_pp.hpp
 libff/algebra/curves/mnt/mnt4/mnt4_g1.hpp
 -
 libff/algebra/curves/mnt/mnt4/mnt4_g2.hpp
@@ -264,11 +264,11 @@ libff/algebra/curves/mnt/mnt4/mnt4_pairing.hpp
 libff/algebra/curves/public_params.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt46_common.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt46_common.hpp
 libff/algebra/fields/bigint.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt6/mnt6_g1.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt6/mnt6_g1.hpp
 vector
 -
 libff/algebra/curves/curve_utils.hpp
@@ -276,7 +276,7 @@ libff/algebra/curves/curve_utils.hpp
 libff/algebra/curves/mnt/mnt6/mnt6_init.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt6/mnt6_g2.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt6/mnt6_g2.hpp
 vector
 -
 libff/algebra/curves/curve_utils.hpp
@@ -284,7 +284,7 @@ libff/algebra/curves/curve_utils.hpp
 libff/algebra/curves/mnt/mnt6/mnt6_init.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt6/mnt6_init.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt6/mnt6_init.hpp
 libff/algebra/curves/mnt/mnt46_common.hpp
 -
 libff/algebra/curves/public_params.hpp
@@ -296,13 +296,13 @@ libff/algebra/fields/fp3.hpp
 libff/algebra/fields/fp6_2over3.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt6/mnt6_pairing.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt6/mnt6_pairing.hpp
 vector
 -
 libff/algebra/curves/mnt/mnt6/mnt6_init.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/mnt/mnt6/mnt6_pp.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/mnt/mnt6/mnt6_pp.hpp
 libff/algebra/curves/mnt/mnt6/mnt6_g1.hpp
 -
 libff/algebra/curves/mnt/mnt6/mnt6_g2.hpp
@@ -314,11 +314,11 @@ libff/algebra/curves/mnt/mnt6/mnt6_pairing.hpp
 libff/algebra/curves/public_params.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/curves/public_params.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/curves/public_params.hpp
 vector
 -
 
-../depends/libsnark/depends/libff/libff/algebra/exponentiation/exponentiation.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/exponentiation/exponentiation.hpp
 cstdint
 -
 libff/algebra/fields/bigint.hpp
@@ -326,11 +326,11 @@ libff/algebra/fields/bigint.hpp
 libff/algebra/exponentiation/exponentiation.tcc
 -
 
-../depends/libsnark/depends/libff/libff/algebra/exponentiation/exponentiation.tcc
+../depends/libsnark/depends/libff/libff/../libff/algebra/exponentiation/exponentiation.tcc
 libff/common/utils.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/bigint.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/bigint.hpp
 cstddef
 -
 iostream
@@ -342,7 +342,7 @@ libff/common/serialization.hpp
 libff/algebra/fields/bigint.tcc
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/bigint.tcc
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/bigint.tcc
 cassert
 -
 cstring
@@ -350,7 +350,7 @@ cstring
 random
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/field_utils.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/field_utils.hpp
 cstdint
 -
 libff/algebra/fields/bigint.hpp
@@ -362,7 +362,7 @@ libff/common/utils.hpp
 libff/algebra/fields/field_utils.tcc
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/field_utils.tcc
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/field_utils.tcc
 complex
 -
 stdexcept
@@ -372,7 +372,7 @@ libff/common/double.hpp
 libff/common/utils.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.hpp
 libff/algebra/exponentiation/exponentiation.hpp
 -
 libff/algebra/fields/bigint.hpp
@@ -380,7 +380,7 @@ libff/algebra/fields/bigint.hpp
 libff/algebra/fields/fp.tcc
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp.tcc
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc
 cassert
 -
 cmath
@@ -394,7 +394,7 @@ libff/algebra/fields/field_utils.hpp
 libff/algebra/fields/fp_aux.tcc
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp12_2over3over2.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp12_2over3over2.hpp
 vector
 -
 libff/algebra/fields/fp.hpp
@@ -406,9 +406,9 @@ libff/algebra/fields/fp6_3over2.hpp
 libff/algebra/fields/fp12_2over3over2.tcc
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp12_2over3over2.tcc
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp12_2over3over2.tcc
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp2.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp2.hpp
 vector
 -
 libff/algebra/fields/fp.hpp
@@ -416,11 +416,11 @@ libff/algebra/fields/fp.hpp
 libff/algebra/fields/fp2.tcc
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp2.tcc
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp2.tcc
 libff/algebra/fields/field_utils.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp3.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp3.hpp
 vector
 -
 libff/algebra/fields/fp.hpp
@@ -428,11 +428,11 @@ libff/algebra/fields/fp.hpp
 libff/algebra/fields/fp3.tcc
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp3.tcc
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp3.tcc
 libff/algebra/fields/field_utils.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp4.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp4.hpp
 libff/algebra/fields/fp.hpp
 -
 libff/algebra/fields/fp2.hpp
@@ -440,13 +440,13 @@ libff/algebra/fields/fp2.hpp
 libff/algebra/fields/fp4.tcc
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp4.tcc
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp4.tcc
 libff/algebra/fields/field_utils.hpp
 -
 libff/algebra/scalar_multiplication/wnaf.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp6_2over3.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp6_2over3.hpp
 libff/algebra/fields/fp.hpp
 -
 libff/algebra/fields/fp2.hpp
@@ -456,13 +456,13 @@ libff/algebra/fields/fp3.hpp
 libff/algebra/fields/fp6_2over3.tcc
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp6_2over3.tcc
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp6_2over3.tcc
 libff/algebra/fields/field_utils.hpp
 -
 libff/algebra/scalar_multiplication/wnaf.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp6_3over2.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp6_3over2.hpp
 vector
 -
 libff/algebra/fields/fp.hpp
@@ -472,13 +472,13 @@ libff/algebra/fields/fp2.hpp
 libff/algebra/fields/fp6_3over2.tcc
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp6_3over2.tcc
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp6_3over2.tcc
 libff/algebra/fields/field_utils.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/fields/fp_aux.tcc
+../depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp_aux.tcc
 
-../depends/libsnark/depends/libff/libff/algebra/scalar_multiplication/multiexp.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/scalar_multiplication/multiexp.hpp
 cstddef
 -
 vector
@@ -486,7 +486,7 @@ vector
 libff/algebra/scalar_multiplication/multiexp.tcc
 -
 
-../depends/libsnark/depends/libff/libff/algebra/scalar_multiplication/multiexp.tcc
+../depends/libsnark/depends/libff/libff/../libff/algebra/scalar_multiplication/multiexp.tcc
 algorithm
 -
 cassert
@@ -506,7 +506,7 @@ libff/common/profiling.hpp
 libff/common/utils.hpp
 -
 
-../depends/libsnark/depends/libff/libff/algebra/scalar_multiplication/wnaf.hpp
+../depends/libsnark/depends/libff/libff/../libff/algebra/scalar_multiplication/wnaf.hpp
 vector
 -
 libff/algebra/fields/bigint.hpp
@@ -514,11 +514,11 @@ libff/algebra/fields/bigint.hpp
 libff/algebra/scalar_multiplication/wnaf.tcc
 -
 
-../depends/libsnark/depends/libff/libff/algebra/scalar_multiplication/wnaf.tcc
+../depends/libsnark/depends/libff/libff/../libff/algebra/scalar_multiplication/wnaf.tcc
 gmp.h
 -
 
-../depends/libsnark/depends/libff/libff/common/default_types/ec_pp.hpp
+../depends/libsnark/depends/libff/libff/../libff/common/default_types/ec_pp.hpp
 libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp
 -
 libff/algebra/curves/bn128/bn128_pp.hpp
@@ -530,13 +530,13 @@ libff/algebra/curves/mnt/mnt4/mnt4_pp.hpp
 libff/algebra/curves/mnt/mnt6/mnt6_pp.hpp
 -
 
-../depends/libsnark/depends/libff/libff/common/double.hpp
+../depends/libsnark/depends/libff/libff/../libff/common/double.hpp
 complex
 -
 libff/algebra/fields/bigint.hpp
 -
 
-../depends/libsnark/depends/libff/libff/common/profiling.hpp
+../depends/libsnark/depends/libff/libff/../libff/common/profiling.hpp
 cstddef
 -
 map
@@ -546,7 +546,7 @@ string
 vector
 -
 
-../depends/libsnark/depends/libff/libff/common/serialization.hpp
+../depends/libsnark/depends/libff/libff/../libff/common/serialization.hpp
 istream
 -
 map
@@ -560,7 +560,7 @@ vector
 libff/common/serialization.tcc
 -
 
-../depends/libsnark/depends/libff/libff/common/serialization.tcc
+../depends/libsnark/depends/libff/libff/../libff/common/serialization.tcc
 cassert
 -
 sstream
@@ -568,7 +568,7 @@ sstream
 libff/common/utils.hpp
 -
 
-../depends/libsnark/depends/libff/libff/common/utils.hpp
+../depends/libsnark/depends/libff/libff/../libff/common/utils.hpp
 cassert
 -
 iostream
@@ -582,7 +582,7 @@ vector
 libff/common/utils.tcc
 -
 
-../depends/libsnark/depends/libff/libff/common/utils.tcc
+../depends/libsnark/depends/libff/libff/../libff/common/utils.tcc
 
 ../depends/libsnark/depends/libfqfft/libfqfft/evaluation_domain/domains/arithmetic_sequence_domain.hpp
 libfqfft/evaluation_domain/evaluation_domain.hpp
@@ -1010,10 +1010,6 @@ libff/algebra/curves/public_params.hpp
 libsnark/relations/constraint_satisfaction_problems/r1cs/r1cs.hpp
 -
 
-/home/lovesh/dev/libsnark-tutorial/src/gadget.hpp
-libsnark/gadgetlib1/gadget.hpp
-/home/lovesh/dev/libsnark-tutorial/src/libsnark/gadgetlib1/gadget.hpp
-
 /home/lovesh/dev/libsnark-tutorial/src/test-gadget.cpp
 stdlib.h
 -
@@ -1027,10 +1023,14 @@ libsnark/common/default_types/r1cs_ppzksnark_pp.hpp
 /home/lovesh/dev/libsnark-tutorial/src/libsnark/common/default_types/r1cs_ppzksnark_pp.hpp
 libsnark/gadgetlib1/pb_variable.hpp
 /home/lovesh/dev/libsnark-tutorial/src/libsnark/gadgetlib1/pb_variable.hpp
-gadget.hpp
-/home/lovesh/dev/libsnark-tutorial/src/gadget.hpp
+test-gadget.hpp
+/home/lovesh/dev/libsnark-tutorial/src/test-gadget.hpp
 util.hpp
 /home/lovesh/dev/libsnark-tutorial/src/util.hpp
+
+/home/lovesh/dev/libsnark-tutorial/src/test-gadget.hpp
+libsnark/gadgetlib1/gadget.hpp
+/home/lovesh/dev/libsnark-tutorial/src/libsnark/gadgetlib1/gadget.hpp
 
 /home/lovesh/dev/libsnark-tutorial/src/util.hpp
 fstream

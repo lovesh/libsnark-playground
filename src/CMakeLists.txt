@@ -34,7 +34,6 @@ target_include_directories(
         PUBLIC
         ${DEPENDS_DIR}/libsnark
         ${DEPENDS_DIR}/libsnark/depends/libfqfft
-        ${DEPENDS_DIR}/libsnark/depends/libff
 )
 
 add_executable(
@@ -53,5 +52,22 @@ target_include_directories(
         PUBLIC
         ${DEPENDS_DIR}/libsnark
         ${DEPENDS_DIR}/libsnark/depends/libfqfft
-        ${DEPENDS_DIR}/libsnark/depends/libff
+)
+
+add_executable(
+        factorisation
+
+        factorisation.cpp
+)
+target_link_libraries(
+        factorisation
+
+        snark
+)
+target_include_directories(
+        factorisation
+
+        PUBLIC
+        ${DEPENDS_DIR}/libsnark
+        ${DEPENDS_DIR}/libsnark/depends/libfqfft
 )

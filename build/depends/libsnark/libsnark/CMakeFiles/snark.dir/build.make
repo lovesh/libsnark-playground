@@ -297,28 +297,28 @@ depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/constraint.cpp.o.provi
 depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/constraint.cpp.o.provides.build: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/constraint.cpp.o
 
 
-depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o: depends/libsnark/libsnark/CMakeFiles/snark.dir/flags.make
-depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o: ../depends/libsnark/libsnark/gadgetlib2/gadget.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lovesh/dev/libsnark-tutorial/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o"
-	cd /home/lovesh/dev/libsnark-tutorial/build/depends/libsnark/libsnark && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o -c /home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/gadget.cpp
+depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o: depends/libsnark/libsnark/CMakeFiles/snark.dir/flags.make
+depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o: ../depends/libsnark/libsnark/gadgetlib2/test-gadget.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lovesh/dev/libsnark-tutorial/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o"
+	cd /home/lovesh/dev/libsnark-tutorial/build/depends/libsnark/libsnark && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o -c /home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/test-gadget.cpp
 
-depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.i"
-	cd /home/lovesh/dev/libsnark-tutorial/build/depends/libsnark/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/gadget.cpp > CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.i
+depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.i"
+	cd /home/lovesh/dev/libsnark-tutorial/build/depends/libsnark/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/test-gadget.cpp > CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.i
 
-depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.s"
-	cd /home/lovesh/dev/libsnark-tutorial/build/depends/libsnark/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/gadget.cpp -o CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.s
+depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.s"
+	cd /home/lovesh/dev/libsnark-tutorial/build/depends/libsnark/libsnark && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/test-gadget.cpp -o CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.s
 
-depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o.requires:
+depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o.requires:
 
-.PHONY : depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o.requires
+.PHONY : depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o.requires
 
-depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o.provides: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o.requires
-	$(MAKE) -f depends/libsnark/libsnark/CMakeFiles/snark.dir/build.make depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o.provides.build
-.PHONY : depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o.provides
+depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o.provides: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o.requires
+	$(MAKE) -f depends/libsnark/libsnark/CMakeFiles/snark.dir/build.make depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o.provides.build
+.PHONY : depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o.provides
 
-depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o.provides.build: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o
+depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o.provides.build: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o
 
 
 depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/infrastructure.cpp.o: depends/libsnark/libsnark/CMakeFiles/snark.dir/flags.make
@@ -573,7 +573,7 @@ snark_OBJECTS = \
 "CMakeFiles/snark.dir/gadgetlib1/constraint_profiling.cpp.o" \
 "CMakeFiles/snark.dir/gadgetlib2/adapters.cpp.o" \
 "CMakeFiles/snark.dir/gadgetlib2/constraint.cpp.o" \
-"CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o" \
+"CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o" \
 "CMakeFiles/snark.dir/gadgetlib2/infrastructure.cpp.o" \
 "CMakeFiles/snark.dir/gadgetlib2/integration.cpp.o" \
 "CMakeFiles/snark.dir/gadgetlib2/pp.cpp.o" \
@@ -598,7 +598,7 @@ depends/libsnark/libsnark/libsnark.a: depends/libsnark/libsnark/CMakeFiles/snark
 depends/libsnark/libsnark/libsnark.a: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib1/constraint_profiling.cpp.o
 depends/libsnark/libsnark/libsnark.a: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/adapters.cpp.o
 depends/libsnark/libsnark/libsnark.a: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/constraint.cpp.o
-depends/libsnark/libsnark/libsnark.a: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o
+depends/libsnark/libsnark/libsnark.a: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o
 depends/libsnark/libsnark/libsnark.a: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/infrastructure.cpp.o
 depends/libsnark/libsnark/libsnark.a: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/integration.cpp.o
 depends/libsnark/libsnark/libsnark.a: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/pp.cpp.o
@@ -630,7 +630,7 @@ depends/libsnark/libsnark/CMakeFiles/snark.dir/requires: depends/libsnark/libsna
 depends/libsnark/libsnark/CMakeFiles/snark.dir/requires: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib1/constraint_profiling.cpp.o.requires
 depends/libsnark/libsnark/CMakeFiles/snark.dir/requires: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/adapters.cpp.o.requires
 depends/libsnark/libsnark/CMakeFiles/snark.dir/requires: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/constraint.cpp.o.requires
-depends/libsnark/libsnark/CMakeFiles/snark.dir/requires: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/gadget.cpp.o.requires
+depends/libsnark/libsnark/CMakeFiles/snark.dir/requires: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/test-gadget.cpp.o.requires
 depends/libsnark/libsnark/CMakeFiles/snark.dir/requires: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/infrastructure.cpp.o.requires
 depends/libsnark/libsnark/CMakeFiles/snark.dir/requires: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/integration.cpp.o.requires
 depends/libsnark/libsnark/CMakeFiles/snark.dir/requires: depends/libsnark/libsnark/CMakeFiles/snark.dir/gadgetlib2/pp.cpp.o.requires

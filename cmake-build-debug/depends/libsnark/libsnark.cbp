@@ -4451,12 +4451,6 @@
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/examples/simple_example.hpp">
 			<Option target="gadgetlib2_integration_test"/>
 		</Unit>
-		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/gadget.cpp">
-			<Option target="snark"/>
-		</Unit>
-		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/gadget.hpp">
-			<Option target="snark"/>
-		</Unit>
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/infrastructure.cpp">
 			<Option target="snark"/>
 		</Unit>
@@ -4479,6 +4473,9 @@
 			<Option target="snark"/>
 		</Unit>
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/protoboard.hpp">
+			<Option target="snark"/>
+		</Unit>
+		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/test-gadget.cpp">
 			<Option target="snark"/>
 		</Unit>
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/tests/adapters_UTEST.cpp">

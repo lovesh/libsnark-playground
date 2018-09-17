@@ -6,7 +6,7 @@
 #include "libsnark/common/default_types/r1cs_ppzksnark_pp.hpp"
 #include "libsnark/gadgetlib1/pb_variable.hpp"
 
-#include "gadget.hpp"
+#include "test-gadget.hpp"
 #include "util.hpp"
 
 using namespace libsnark;
@@ -46,7 +46,7 @@ int main() {
 
     const r1cs_ppzksnark_keypair<default_r1cs_ppzksnark_pp> keypair = r1cs_ppzksnark_generator<default_r1cs_ppzksnark_pp>(
             constraint_system);
-    
+
     // Add witness values
 
     pb.val(out) = 35;

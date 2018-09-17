@@ -159,11 +159,12 @@
 /home/lovesh/dev/libsnark-tutorial/build/depends/libsnark/libsnark/CMakeFiles/NightlySubmit.dir
 /home/lovesh/dev/libsnark-tutorial/build/depends/libsnark/libsnark/CMakeFiles/list_install_components.dir
 /home/lovesh/dev/libsnark-tutorial/build/src/CMakeFiles/install/strip.dir
-/home/lovesh/dev/libsnark-tutorial/build/src/CMakeFiles/install.dir
 /home/lovesh/dev/libsnark-tutorial/build/src/CMakeFiles/list_install_components.dir
 /home/lovesh/dev/libsnark-tutorial/build/src/CMakeFiles/main.dir
 /home/lovesh/dev/libsnark-tutorial/build/src/CMakeFiles/edit_cache.dir
 /home/lovesh/dev/libsnark-tutorial/build/src/CMakeFiles/install/local.dir
 /home/lovesh/dev/libsnark-tutorial/build/src/CMakeFiles/test.dir
 /home/lovesh/dev/libsnark-tutorial/build/src/CMakeFiles/test-gadget.dir
+/home/lovesh/dev/libsnark-tutorial/build/src/CMakeFiles/install.dir
+/home/lovesh/dev/libsnark-tutorial/build/src/CMakeFiles/factorisation.dir
 /home/lovesh/dev/libsnark-tutorial/build/src/CMakeFiles/rebuild_cache.dir

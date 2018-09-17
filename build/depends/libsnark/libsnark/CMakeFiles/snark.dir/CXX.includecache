@@ -1124,14 +1124,6 @@ libsnark/gadgetlib2/constraint.hpp
 libsnark/gadgetlib2/variable.hpp
 -
 
-/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/gadget.cpp
-cmath
--
-memory
--
-libsnark/gadgetlib2/gadget.hpp
--
-
 /home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/infrastructure.cpp
 cassert
 -
@@ -1166,6 +1158,14 @@ libsnark/gadgetlib2/pp.hpp
 cstdio
 -
 libsnark/gadgetlib2/protoboard.hpp
+-
+
+/home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/test-gadget.cpp
+cmath
+-
+memory
+-
+libsnark/gadgetlib2/gadget.hpp
 -
 
 /home/lovesh/dev/libsnark-tutorial/depends/libsnark/libsnark/gadgetlib2/variable.cpp
