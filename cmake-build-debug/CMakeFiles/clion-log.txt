@@ -1,0 +1,21 @@
+/home/lovesh/Downloads/clion-182.4129.15/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/lovesh/dev/libsnark-tutorial
+CMake Warning (dev) at CMakeLists.txt:3 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    CMAKE_PROJECT_VERSION
+    CMAKE_PROJECT_VERSION_MAJOR
+    CMAKE_PROJECT_VERSION_MINOR
+    CMAKE_PROJECT_VERSION_PATCH
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Boost version: 1.65.1
+-- Found the following Boost libraries:
+--   program_options
+-- GMP: /usr/lib/x86_64-linux-gnu/libgmp.so, /usr/include/x86_64-linux-gnu
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lovesh/dev/libsnark-tutorial/cmake-build-debug
