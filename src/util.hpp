@@ -34,35 +34,35 @@ void print_vk_to_file(r1cs_ppzksnark_verification_key<ppT> vk, string pathToFile
   G1<ppT> IC_0(IC.first);
   IC_0.to_affine_coordinates();
 
-  vk_data << A.X << endl;
-  vk_data << A.Y << endl;
+  vk_data << A.coord[0] << endl;
+  vk_data << A.coord[1] << endl;
 
-  vk_data << B.X << endl;
-  vk_data << B.Y << endl;
+  vk_data << B.coord[0] << endl;
+  vk_data << B.coord[1] << endl;
 
-  vk_data << C.X << endl;
-  vk_data << C.Y << endl;
+  vk_data << C.coord[0] << endl;
+  vk_data << C.coord[1] << endl;
 
-  vk_data << gamma.X << endl;
-  vk_data << gamma.Y << endl;
+  vk_data << gamma.coord[0] << endl;
+  vk_data << gamma.coord[1] << endl;
 
-  vk_data << gamma_beta_1.X << endl;
-  vk_data << gamma_beta_1.Y << endl;
+  vk_data << gamma_beta_1.coord[0] << endl;
+  vk_data << gamma_beta_1.coord[1] << endl;
 
-  vk_data << gamma_beta_2.X << endl;
-  vk_data << gamma_beta_2.Y << endl;
+  vk_data << gamma_beta_2.coord[0] << endl;
+  vk_data << gamma_beta_2.coord[1] << endl;
 
-  vk_data << Z.X << endl;
-  vk_data << Z.Y << endl;
+  vk_data << Z.coord[0] << endl;
+  vk_data << Z.coord[1] << endl;
 
-  vk_data << IC_0.X << endl;
-  vk_data << IC_0.Y << endl;
+  vk_data << IC_0.coord[0] << endl;
+  vk_data << IC_0.coord[1] << endl;
 
   for(size_t i=0; i<IC.size(); i++) {
     G1<ppT> IC_N(IC.rest[i]);
     IC_N.to_affine_coordinates();
-    vk_data << IC_N.X << endl;
-    vk_data << IC_N.Y << endl;
+    vk_data << IC_N.coord[0] << endl;
+    vk_data << IC_N.coord[1] << endl;
   }
 
   vk_data.close();
@@ -94,29 +94,29 @@ void print_proof_to_file(r1cs_ppzksnark_proof<ppT> proof, string pathToFile)
   G1<ppT> K(proof.g_K);
   K.to_affine_coordinates();
 
-  proof_data << A_g.X << endl;
-  proof_data << A_g.Y << endl;
+  proof_data << A_g.coord[0] << endl;
+  proof_data << A_g.coord[1] << endl;
 
-  proof_data << A_h.X << endl;
-  proof_data << A_h.Y << endl;
+  proof_data << A_h.coord[0] << endl;
+  proof_data << A_h.coord[1] << endl;
 
-  proof_data << B_g.X << endl;
-  proof_data << B_g.Y << endl;
+  proof_data << B_g.coord[0] << endl;
+  proof_data << B_g.coord[1] << endl;
 
-  proof_data << B_h.X << endl;
-  proof_data << B_h.Y << endl;
+  proof_data << B_h.coord[0] << endl;
+  proof_data << B_h.coord[1] << endl;
 
-  proof_data << C_g.X << endl;
-  proof_data << C_g.Y << endl;
+  proof_data << C_g.coord[0] << endl;
+  proof_data << C_g.coord[1] << endl;
 
-  proof_data << C_h.X << endl;
-  proof_data << C_h.Y << endl;
+  proof_data << C_h.coord[0] << endl;
+  proof_data << C_h.coord[1] << endl;
 
-  proof_data << H.X << endl;
-  proof_data << H.Y << endl;
+  proof_data << H.coord[0] << endl;
+  proof_data << H.coord[1] << endl;
 
-  proof_data << K.X << endl;
-  proof_data << K.Y << endl;
+  proof_data << K.coord[0] << endl;
+  proof_data << K.coord[1] << endl;
 
   proof_data.close();
 }
