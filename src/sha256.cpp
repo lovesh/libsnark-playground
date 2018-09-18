@@ -10,11 +10,7 @@
 using namespace libsnark;
 using namespace std;
 
-int main() {
-    // Initialize the curve parameters
-
-    default_r1cs_ppzksnark_pp::init_public_params();
-
+void two_inputs_hash_gadget() {
     typedef libff::Fr<default_r1cs_ppzksnark_pp> FieldT;
 
     protoboard<FieldT> pb;
@@ -35,7 +31,7 @@ int main() {
 
     // Add witness values
 
-    // Empty string
+    // Empty string (all 0s)
     const libff::bit_vector left_bv = libff::int_list_to_bits({0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, 32);
     const libff::bit_vector right_bv = libff::int_list_to_bits({0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, 32);
     const libff::bit_vector hash_bv = libff::int_list_to_bits({0xda5698be, 0x17b9b469, 0x62335799, 0x779fbeca, 0x8ce5d491, 0xc0d26243, 0xbafef9ea, 0x1837a9d8}, 32);
@@ -54,7 +50,7 @@ int main() {
     f.generate_r1cs_witness();
     output.generate_r1cs_witness(hash_bv);
 
-    cout << "Satisfied status: " << pb.is_satisfied() << endl;
+    cout << "two_inputs_hash_gadget => Satisfied status: " << pb.is_satisfied() << endl;
 
     // Create proof
     const r1cs_ppzksnark_proof<default_r1cs_ppzksnark_pp> proof1 = r1cs_ppzksnark_prover<default_r1cs_ppzksnark_pp>(
@@ -63,7 +59,57 @@ int main() {
     // Verify proof
     bool verified1 = r1cs_ppzksnark_verifier_strong_IC<default_r1cs_ppzksnark_pp>(keypair.vk, pb.primary_input(), proof1);
 
-    cout << "Verfied: " << verified1 << endl;
+    cout << "two_inputs_hash_gadget => Verfied: " << verified1 << endl;
+}
+
+void one_input_hash_gadget() {
+    typedef libff::Fr<default_r1cs_ppzksnark_pp> FieldT;
+
+    protoboard<FieldT> pb;
+
+    block_variable<FieldT> input(pb, SHA256_block_size, "input");
+    digest_variable<FieldT> output(pb, SHA256_digest_size, "output");
+
+    sha256_two_to_one_hash_gadget<FieldT> f(pb, SHA256_block_size, input, output, "f");
+    f.generate_r1cs_constraints();
+    printf("Number of constraints for sha256_two_to_one_hash_gadget: %zu\n", pb.num_constraints());
+
+    // Trusted setup
+    const r1cs_constraint_system<FieldT> constraint_system = pb.get_constraint_system();
+
+    const r1cs_ppzksnark_keypair<default_r1cs_ppzksnark_pp> keypair = r1cs_ppzksnark_generator<default_r1cs_ppzksnark_pp>(
+            constraint_system);
+
+    // Add witness values
+    // For string "hello world"
+    const libff::bit_vector input_bv = libff::int_list_to_bits({0x6c6c6568, 0x6f77206f, 0x00646c72, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000}, 32);
+    const libff::bit_vector hash_bv = libff::int_list_to_bits({0xc082e440, 0x671cd799, 0x8baf04c0, 0x22c07e03, 0x4b125ee7, 0xd28e0a59, 0x49e4b924, 0x5f5cf897}, 32);
+
+    input.generate_r1cs_witness(input_bv);
+
+    f.generate_r1cs_witness();
+    output.generate_r1cs_witness(hash_bv);
+
+    cout << "one_input_hash_gadget => Satisfied status: " << pb.is_satisfied() << endl;
+
+    // Create proof
+    const r1cs_ppzksnark_proof<default_r1cs_ppzksnark_pp> proof1 = r1cs_ppzksnark_prover<default_r1cs_ppzksnark_pp>(
+            keypair.pk, pb.primary_input(), pb.auxiliary_input());
+
+    // Verify proof
+    bool verified1 = r1cs_ppzksnark_verifier_strong_IC<default_r1cs_ppzksnark_pp>(keypair.vk, pb.primary_input(), proof1);
+
+    cout << "one_input_hash_gadget => Verfied: " << verified1 << endl;
+}
+
+int main() {
+    // Initialize the curve parameters
+
+    default_r1cs_ppzksnark_pp::init_public_params();
+
+    two_inputs_hash_gadget();
+
+    one_input_hash_gadget();
 
     return 0;
 }

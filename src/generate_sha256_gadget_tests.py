@@ -61,8 +61,21 @@ def all_0s_hash():
     print("const libff::bit_vector hash_bv = %s;" % cpp_val(h))
 
 
+def short_string_hash(s):
+    assert len(s) <= BLOCK_BYTES
+    print('hashing short string {}'.format(s))
+    inp_list = list(s) + [0] * (BLOCK_BYTES - len(s))
+    print(inp_list)
+    hash = H_bytes(inp_list)
+    print('const libff::bit_vector input_bv = %s;' % cpp_val(inp_list))
+    print('const libff::bit_vector hash_bv = %s;' % cpp_val(hash))
+
+
 if __name__ == '__main__':
-    random.seed(0) # for reproducibility
+    random.seed(0)  # for reproducibility
     generate_sha256_gadget_tests()
+    # all_0s_hash()
+    short_string_hash(b"hello world")
+
 
 

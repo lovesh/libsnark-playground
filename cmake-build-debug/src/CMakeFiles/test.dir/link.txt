@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=c++11 -Wall -Wextra -Wfatal-errors -pthread -ggdb3 -O2 -march=native -mtune=native -g  -rdynamic CMakeFiles/test.dir/test.cpp.o  -o test ../depends/libsnark/libsnark/libsnarkd.a ../depends/libsnark/depends/libff/libff/libffd.a /usr/lib/x86_64-linux-gnu/libgmp.so -lgmp -lgmpxx -lcrypto -lprocps ../depends/libsnark/depends/libzmd.a 
