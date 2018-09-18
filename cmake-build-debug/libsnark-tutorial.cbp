@@ -3991,6 +3991,134 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/depends/libsnark/libsnark/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="factorisation">
+				<Option output="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/factorisation" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCURVE_BN128"/>
+					<Add option="-DBN_SUPPORT_SNARK=1"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/."/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/src/."/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libfqfft"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libff"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libfqfft"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libff/libff/.."/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 factorisation"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="factorisation/fast">
+				<Option output="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/factorisation" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCURVE_BN128"/>
+					<Add option="-DBN_SUPPORT_SNARK=1"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/."/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/src/."/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libfqfft"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libff"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libfqfft"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libff/libff/.."/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 factorisation/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test">
+				<Option output="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/test" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCURVE_BN128"/>
+					<Add option="-DBN_SUPPORT_SNARK=1"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/."/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/src/."/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libfqfft"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libff"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libfqfft"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libff/libff/.."/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 test"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test/fast">
+				<Option output="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/test" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCURVE_BN128"/>
+					<Add option="-DBN_SUPPORT_SNARK=1"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/."/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/src/."/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libfqfft"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libff"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libfqfft"/>
+					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libff/libff/.."/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 test/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="main">
 				<Option output="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/main" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src"/>
@@ -4055,8 +4183,8 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="test">
-				<Option output="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/test" prefix_auto="0" extension_auto="0"/>
+			<Target title="sha256">
+				<Option output="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/sha256" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -4068,7 +4196,6 @@
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/src/."/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libfqfft"/>
-					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libff"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libff"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libfqfft"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libff/libff/.."/>
@@ -4082,14 +4209,14 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 test"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 sha256"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="test/fast">
-				<Option output="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/test" prefix_auto="0" extension_auto="0"/>
+			<Target title="sha256/fast">
+				<Option output="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/sha256" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -4101,7 +4228,6 @@
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/src/."/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libfqfft"/>
-					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libff"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libff"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libfqfft"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libff/libff/.."/>
@@ -4115,7 +4241,7 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 test/fast"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 sha256/fast"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
@@ -4134,7 +4260,6 @@
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/src/."/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libfqfft"/>
-					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libff"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libff"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libfqfft"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libff/libff/.."/>
@@ -4167,7 +4292,6 @@
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/src/."/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libfqfft"/>
-					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libff"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libff"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libfqfft"/>
 					<Add directory="/home/lovesh/dev/libsnark-tutorial/depends/libsnark/depends/libff/libff/.."/>
@@ -4896,10 +5020,13 @@
 			<Option target="zk_proof_systems_ram_zksnark_test"/>
 		</Unit>
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/src/factorisation.cpp">
-			<Option target="main"/>
+			<Option target="factorisation"/>
 		</Unit>
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/src/main.cpp">
 			<Option target="main"/>
+		</Unit>
+		<Unit filename="/home/lovesh/dev/libsnark-tutorial/src/sha256.cpp">
+			<Option target="sha256"/>
 		</Unit>
 		<Unit filename="/home/lovesh/dev/libsnark-tutorial/src/test-gadget.cpp">
 			<Option target="test-gadget"/>

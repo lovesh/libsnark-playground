@@ -71,3 +71,21 @@ target_include_directories(
         ${DEPENDS_DIR}/libsnark
         ${DEPENDS_DIR}/libsnark/depends/libfqfft
 )
+
+add_executable(
+        sha256
+
+        sha256.cpp
+)
+target_link_libraries(
+        sha256
+
+        snark
+)
+target_include_directories(
+        sha256
+
+        PUBLIC
+        ${DEPENDS_DIR}/libsnark
+        ${DEPENDS_DIR}/libsnark/depends/libfqfft
+)

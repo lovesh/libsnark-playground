@@ -4,7 +4,6 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/lovesh/dev/libsnark-tutorial/src/factorisation.cpp" "/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/CMakeFiles/main.dir/factorisation.cpp.o"
   "/home/lovesh/dev/libsnark-tutorial/src/main.cpp" "/home/lovesh/dev/libsnark-tutorial/cmake-build-debug/src/CMakeFiles/main.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

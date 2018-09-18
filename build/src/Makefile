@@ -78,6 +78,17 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -112,17 +123,6 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -202,6 +202,21 @@ test-gadget/fast:
 .PHONY : test-gadget/fast
 
 # Convenience name for target.
+src/CMakeFiles/sha256.dir/rule:
+	cd /home/lovesh/dev/libsnark-tutorial/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/sha256.dir/rule
+.PHONY : src/CMakeFiles/sha256.dir/rule
+
+# Convenience name for target.
+sha256: src/CMakeFiles/sha256.dir/rule
+
+.PHONY : sha256
+
+# fast build rule for target.
+sha256/fast:
+	cd /home/lovesh/dev/libsnark-tutorial/build && $(MAKE) -f src/CMakeFiles/sha256.dir/build.make src/CMakeFiles/sha256.dir/build
+.PHONY : sha256/fast
+
+# Convenience name for target.
 src/CMakeFiles/factorisation.dir/rule:
 	cd /home/lovesh/dev/libsnark-tutorial/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/factorisation.dir/rule
 .PHONY : src/CMakeFiles/factorisation.dir/rule
@@ -270,6 +285,33 @@ main.cpp.s:
 	cd /home/lovesh/dev/libsnark-tutorial/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+sha256.o: sha256.cpp.o
+
+.PHONY : sha256.o
+
+# target to build an object file
+sha256.cpp.o:
+	cd /home/lovesh/dev/libsnark-tutorial/build && $(MAKE) -f src/CMakeFiles/sha256.dir/build.make src/CMakeFiles/sha256.dir/sha256.cpp.o
+.PHONY : sha256.cpp.o
+
+sha256.i: sha256.cpp.i
+
+.PHONY : sha256.i
+
+# target to preprocess a source file
+sha256.cpp.i:
+	cd /home/lovesh/dev/libsnark-tutorial/build && $(MAKE) -f src/CMakeFiles/sha256.dir/build.make src/CMakeFiles/sha256.dir/sha256.cpp.i
+.PHONY : sha256.cpp.i
+
+sha256.s: sha256.cpp.s
+
+.PHONY : sha256.s
+
+# target to generate assembly for a file
+sha256.cpp.s:
+	cd /home/lovesh/dev/libsnark-tutorial/build && $(MAKE) -f src/CMakeFiles/sha256.dir/build.make src/CMakeFiles/sha256.dir/sha256.cpp.s
+.PHONY : sha256.cpp.s
+
 test-gadget.o: test-gadget.cpp.o
 
 .PHONY : test-gadget.o
@@ -332,20 +374,24 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... list_install_components"
+	@echo "... rebuild_cache"
 	@echo "... main"
 	@echo "... edit_cache"
 	@echo "... install/local"
 	@echo "... test"
 	@echo "... test-gadget"
+	@echo "... sha256"
 	@echo "... install"
 	@echo "... factorisation"
-	@echo "... rebuild_cache"
 	@echo "... factorisation.o"
 	@echo "... factorisation.i"
 	@echo "... factorisation.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... sha256.o"
+	@echo "... sha256.i"
+	@echo "... sha256.s"
 	@echo "... test-gadget.o"
 	@echo "... test-gadget.i"
 	@echo "... test-gadget.s"

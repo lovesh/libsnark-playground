@@ -66,6 +66,7 @@ int main() {
     cout << "Primary (public) input: " << pb.primary_input() << endl;
     cout << "Auxiliary (private) input: " << pb.auxiliary_input() << endl;
     cout << "Verification status: " << verified << endl;
+    cout << "Satisfied status: " << pb.is_satisfied() << endl;
 
     // Add witness values
     pb.val(x) = 3;
@@ -84,6 +85,7 @@ int main() {
     cout << "Primary (public) input: " << pb.primary_input() << endl;
     cout << "Auxiliary (private) input: " << pb.auxiliary_input() << endl;
     cout << "Verification status: " << verified1 << endl;
+    cout << "Satisfied status: " << pb.is_satisfied() << endl;
 
     return 0;
 }

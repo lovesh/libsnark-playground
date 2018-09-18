@@ -56,6 +56,28 @@ CMAKE_BINARY_DIR = /home/lovesh/dev/libsnark-tutorial/cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/home/lovesh/Downloads/clion-182.4129.15/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/home/lovesh/Downloads/clion-182.4129.15/bin/cmake/linux/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
@@ -68,17 +90,15 @@ install/strip/fast: preinstall/fast
 	/home/lovesh/Downloads/clion-182.4129.15/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/home/lovesh/Downloads/clion-182.4129.15/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
 
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/home/lovesh/Downloads/clion-182.4129.15/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target install
 install: preinstall
@@ -92,37 +112,17 @@ install/fast: preinstall/fast
 	/home/lovesh/Downloads/clion-182.4129.15/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/home/lovesh/Downloads/clion-182.4129.15/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/lovesh/Downloads/clion-182.4129.15/bin/cmake/linux/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/lovesh/Downloads/clion-182.4129.15/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/home/lovesh/Downloads/clion-182.4129.15/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -157,19 +157,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/main.dir/rule:
-	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/main.dir/rule
-.PHONY : src/CMakeFiles/main.dir/rule
+src/CMakeFiles/factorisation.dir/rule:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/factorisation.dir/rule
+.PHONY : src/CMakeFiles/factorisation.dir/rule
 
 # Convenience name for target.
-main: src/CMakeFiles/main.dir/rule
+factorisation: src/CMakeFiles/factorisation.dir/rule
 
-.PHONY : main
+.PHONY : factorisation
 
 # fast build rule for target.
-main/fast:
-	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/build
-.PHONY : main/fast
+factorisation/fast:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/factorisation.dir/build.make src/CMakeFiles/factorisation.dir/build
+.PHONY : factorisation/fast
 
 # Convenience name for target.
 src/CMakeFiles/test.dir/rule:
@@ -185,6 +185,36 @@ test: src/CMakeFiles/test.dir/rule
 test/fast:
 	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/test.dir/build.make src/CMakeFiles/test.dir/build
 .PHONY : test/fast
+
+# Convenience name for target.
+src/CMakeFiles/main.dir/rule:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/main.dir/rule
+.PHONY : src/CMakeFiles/main.dir/rule
+
+# Convenience name for target.
+main: src/CMakeFiles/main.dir/rule
+
+.PHONY : main
+
+# fast build rule for target.
+main/fast:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/build
+.PHONY : main/fast
+
+# Convenience name for target.
+src/CMakeFiles/sha256.dir/rule:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/sha256.dir/rule
+.PHONY : src/CMakeFiles/sha256.dir/rule
+
+# Convenience name for target.
+sha256: src/CMakeFiles/sha256.dir/rule
+
+.PHONY : sha256
+
+# fast build rule for target.
+sha256/fast:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/sha256.dir/build.make src/CMakeFiles/sha256.dir/build
+.PHONY : sha256/fast
 
 # Convenience name for target.
 src/CMakeFiles/test-gadget.dir/rule:
@@ -207,7 +237,7 @@ factorisation.o: factorisation.cpp.o
 
 # target to build an object file
 factorisation.cpp.o:
-	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/factorisation.cpp.o
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/factorisation.dir/build.make src/CMakeFiles/factorisation.dir/factorisation.cpp.o
 .PHONY : factorisation.cpp.o
 
 factorisation.i: factorisation.cpp.i
@@ -216,7 +246,7 @@ factorisation.i: factorisation.cpp.i
 
 # target to preprocess a source file
 factorisation.cpp.i:
-	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/factorisation.cpp.i
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/factorisation.dir/build.make src/CMakeFiles/factorisation.dir/factorisation.cpp.i
 .PHONY : factorisation.cpp.i
 
 factorisation.s: factorisation.cpp.s
@@ -225,7 +255,7 @@ factorisation.s: factorisation.cpp.s
 
 # target to generate assembly for a file
 factorisation.cpp.s:
-	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/factorisation.cpp.s
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/factorisation.dir/build.make src/CMakeFiles/factorisation.dir/factorisation.cpp.s
 .PHONY : factorisation.cpp.s
 
 main.o: main.cpp.o
@@ -254,6 +284,33 @@ main.s: main.cpp.s
 main.cpp.s:
 	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+sha256.o: sha256.cpp.o
+
+.PHONY : sha256.o
+
+# target to build an object file
+sha256.cpp.o:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/sha256.dir/build.make src/CMakeFiles/sha256.dir/sha256.cpp.o
+.PHONY : sha256.cpp.o
+
+sha256.i: sha256.cpp.i
+
+.PHONY : sha256.i
+
+# target to preprocess a source file
+sha256.cpp.i:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/sha256.dir/build.make src/CMakeFiles/sha256.dir/sha256.cpp.i
+.PHONY : sha256.cpp.i
+
+sha256.s: sha256.cpp.s
+
+.PHONY : sha256.s
+
+# target to generate assembly for a file
+sha256.cpp.s:
+	cd /home/lovesh/dev/libsnark-tutorial/cmake-build-debug && $(MAKE) -f src/CMakeFiles/sha256.dir/build.make src/CMakeFiles/sha256.dir/sha256.cpp.s
+.PHONY : sha256.cpp.s
 
 test-gadget.o: test-gadget.cpp.o
 
@@ -315,21 +372,26 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
-	@echo "... install/local"
-	@echo "... install"
-	@echo "... list_install_components"
-	@echo "... rebuild_cache"
-	@echo "... main"
-	@echo "... edit_cache"
+	@echo "... factorisation"
 	@echo "... test"
+	@echo "... main"
+	@echo "... sha256"
+	@echo "... edit_cache"
 	@echo "... test-gadget"
+	@echo "... rebuild_cache"
+	@echo "... install/strip"
+	@echo "... list_install_components"
+	@echo "... install"
+	@echo "... install/local"
 	@echo "... factorisation.o"
 	@echo "... factorisation.i"
 	@echo "... factorisation.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... sha256.o"
+	@echo "... sha256.i"
+	@echo "... sha256.s"
 	@echo "... test-gadget.o"
 	@echo "... test-gadget.i"
 	@echo "... test-gadget.s"

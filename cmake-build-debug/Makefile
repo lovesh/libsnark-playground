@@ -1301,17 +1301,17 @@ test_set_commitment_gadget/fast:
 .PHONY : test_set_commitment_gadget/fast
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named factorisation
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 main
-.PHONY : main
+factorisation: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 factorisation
+.PHONY : factorisation
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/build
-.PHONY : main/fast
+factorisation/fast:
+	$(MAKE) -f src/CMakeFiles/factorisation.dir/build.make src/CMakeFiles/factorisation.dir/build
+.PHONY : factorisation/fast
 
 #=============================================================================
 # Target rules for targets named test
@@ -1325,6 +1325,32 @@ test: cmake_check_build_system
 test/fast:
 	$(MAKE) -f src/CMakeFiles/test.dir/build.make src/CMakeFiles/test.dir/build
 .PHONY : test/fast
+
+#=============================================================================
+# Target rules for targets named main
+
+# Build rule for target.
+main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 main
+.PHONY : main
+
+# fast build rule for target.
+main/fast:
+	$(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/build
+.PHONY : main/fast
+
+#=============================================================================
+# Target rules for targets named sha256
+
+# Build rule for target.
+sha256: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sha256
+.PHONY : sha256
+
+# fast build rule for target.
+sha256/fast:
+	$(MAKE) -f src/CMakeFiles/sha256.dir/build.make src/CMakeFiles/sha256.dir/build
+.PHONY : sha256/fast
 
 #=============================================================================
 # Target rules for targets named test-gadget
@@ -1439,8 +1465,10 @@ help:
 	@echo "... test_knapsack_gadget"
 	@echo "... test_merkle_tree_gadgets"
 	@echo "... test_set_commitment_gadget"
-	@echo "... main"
+	@echo "... factorisation"
 	@echo "... test"
+	@echo "... main"
+	@echo "... sha256"
 	@echo "... test-gadget"
 .PHONY : help
 

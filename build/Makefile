@@ -1340,6 +1340,19 @@ test-gadget/fast:
 .PHONY : test-gadget/fast
 
 #=============================================================================
+# Target rules for targets named sha256
+
+# Build rule for target.
+sha256: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sha256
+.PHONY : sha256
+
+# fast build rule for target.
+sha256/fast:
+	$(MAKE) -f src/CMakeFiles/sha256.dir/build.make src/CMakeFiles/sha256.dir/build
+.PHONY : sha256/fast
+
+#=============================================================================
 # Target rules for targets named factorisation
 
 # Build rule for target.
@@ -1455,6 +1468,7 @@ help:
 	@echo "... main"
 	@echo "... test"
 	@echo "... test-gadget"
+	@echo "... sha256"
 	@echo "... factorisation"
 .PHONY : help
 
