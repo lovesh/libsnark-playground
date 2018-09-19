@@ -87,6 +87,8 @@ void two_inputs_hash_gadget() {
 }
 
 void one_input_hash_gadget() {
+    using namespace std::chrono;
+
     protoboard<FieldT> pb;
     block_variable<FieldT>* input;
     digest_variable<FieldT>* output;
@@ -95,15 +97,18 @@ void one_input_hash_gadget() {
     r1cs_ppzksnark_keypair<default_r1cs_ppzksnark_pp> keypair = setup_gadget(pb, input, output, f);
 
     int i = 0;
-//    std::chrono::duration<std::chrono::microseconds> tp = 0;
-//    std::chrono::duration<std::chrono::microseconds> tv = 0;
+    int iterations = 100;
 
-    while (i < 10) {
+    duration<double> tc(0);
+    duration<double> tp(0);
+    duration<double> tv(0);
+
+    while (i < iterations) {
         // Hash of string "hello world"
         const libff::bit_vector hash_bv = libff::int_list_to_bits({0xc082e440, 0x671cd799, 0x8baf04c0, 0x22c07e03, 0x4b125ee7, 0xd28e0a59, 0x49e4b924, 0x5f5cf897}, 32);
         output->generate_r1cs_witness(hash_bv);
 
-        std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+        steady_clock::time_point begin = steady_clock::now();
         // Add witness values
         // For string "hello world"
         const libff::bit_vector input_bv = libff::int_list_to_bits({0x6c6c6568, 0x6f77206f, 0x00646c72, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000}, 32);
@@ -111,29 +116,33 @@ void one_input_hash_gadget() {
 
         f->generate_r1cs_witness();
 
+        steady_clock::time_point mid = steady_clock::now();
+        tc += duration_cast<duration<double>>(mid - begin);
+
         cout << "one_input_hash_gadget => Satisfied status: " << pb.is_satisfied() << endl;
 
         // Create proof
         const r1cs_ppzksnark_proof<default_r1cs_ppzksnark_pp> proof1 = r1cs_ppzksnark_prover<default_r1cs_ppzksnark_pp>(
                 keypair.pk, pb.primary_input(), pb.auxiliary_input());
 
-        std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-        cout << "Proving time: " << (end - begin).count() << endl;
-//        tp += (end - begin).count();
+        steady_clock::time_point end = steady_clock::now();
+        tp += duration_cast<duration<double>>(end - begin);
 
-        std::chrono::steady_clock::time_point begin1 = std::chrono::steady_clock::now();
+        steady_clock::time_point begin1 = steady_clock::now();
         // Verify proof
         bool verified1 = verify_proof(keypair.vk, pb.primary_input(), proof1);
-        std::chrono::steady_clock::time_point end1= std::chrono::steady_clock::now();
-        cout << "Verification time: " << (end1 - begin1).count() << endl;
-//        tv += (end1 - begin1);
+        steady_clock::time_point end1 = steady_clock::now();
+        tv += duration_cast<duration<double>>(end1 - begin1);
 
         cout << "one_input_hash_gadget => Verfied: " << verified1 << endl;
 
         i++;
     }
 
-
+    cout << "Total iterations : " << iterations << endl;
+    cout << "Total constraint generation time (seconds): " << tc.count() << endl;
+    cout << "Total proving time (seconds): " << tp.count() << endl;
+    cout << "Total verification time (seconds): " << tv.count() << endl;
 }
 
 
