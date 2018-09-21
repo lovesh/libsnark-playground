@@ -89,3 +89,41 @@ target_include_directories(
         ${DEPENDS_DIR}/libsnark
         ${DEPENDS_DIR}/libsnark/depends/libfqfft
 )
+
+#add_subdirectory(common)
+
+add_executable(
+        mimc
+
+        mimc.cpp
+)
+target_link_libraries(
+        mimc
+
+        snark
+)
+target_include_directories(
+        mimc
+
+        PUBLIC
+        ${DEPENDS_DIR}/libsnark
+        ${DEPENDS_DIR}/libsnark/depends/libfqfft
+)
+
+add_executable(
+        longsightf-gadget
+
+        longsightf-gadget.cpp
+)
+target_link_libraries(
+        longsightf-gadget
+
+        snark
+)
+target_include_directories(
+        longsightf-gadget
+
+        PUBLIC
+        ${DEPENDS_DIR}/libsnark
+        ${DEPENDS_DIR}/libsnark/depends/libfqfft
+)

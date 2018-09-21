@@ -2,7 +2,6 @@
 #include <iostream>
 #include <chrono>
 
-#include "libff/algebra/fields/field_utils.hpp"
 #include "libsnark/zk_proof_systems/ppzksnark/r1cs_ppzksnark/r1cs_ppzksnark.hpp"
 #include "libsnark/common/default_types/r1cs_ppzksnark_pp.hpp"
 #include "libsnark/gadgetlib1/pb_variable.hpp"
@@ -24,7 +23,6 @@ r1cs_ppzksnark_keypair<default_r1cs_ppzksnark_pp> setup_gadget(protoboard<FieldT
     out = new digest_variable<FieldT>(pb, SHA256_block_size, "output");
     g = new sha256_two_to_one_hash_gadget<FieldT>(pb, SHA256_block_size, *inp, *out, "f");
     g->generate_r1cs_constraints();
-    cout << "4444>>>>>>>> " << endl;
     printf("Number of constraints for sha256_two_to_one_hash_gadget: %zu\n", pb.num_constraints());
 
     // Trusted setup
@@ -86,7 +84,7 @@ void two_inputs_hash_gadget() {
     cout << "two_inputs_hash_gadget => Verfied: " << verified1 << endl;
 }
 
-void one_input_hash_gadget() {
+int one_input_hash_gadget() {
     using namespace std::chrono;
 
     protoboard<FieldT> pb;
@@ -97,7 +95,7 @@ void one_input_hash_gadget() {
     r1cs_ppzksnark_keypair<default_r1cs_ppzksnark_pp> keypair = setup_gadget(pb, input, output, f);
 
     int i = 0;
-    int iterations = 100;
+    int iterations = 10;
 
     duration<double> tc(0);
     duration<double> tp(0);
@@ -132,6 +130,7 @@ void one_input_hash_gadget() {
         // Verify proof
         bool verified1 = verify_proof(keypair.vk, pb.primary_input(), proof1);
         steady_clock::time_point end1 = steady_clock::now();
+        if (verified1 == 0) return -1;
         tv += duration_cast<duration<double>>(end1 - begin1);
 
         cout << "one_input_hash_gadget => Verfied: " << verified1 << endl;
@@ -143,6 +142,8 @@ void one_input_hash_gadget() {
     cout << "Total constraint generation time (seconds): " << tc.count() << endl;
     cout << "Total proving time (seconds): " << tp.count() << endl;
     cout << "Total verification time (seconds): " << tv.count() << endl;
+
+    return 1;
 }
 
 
@@ -151,9 +152,9 @@ int main() {
 
     default_r1cs_ppzksnark_pp::init_public_params();
 
-//    two_inputs_hash_gadget();
+    two_inputs_hash_gadget();
 
-    one_input_hash_gadget();
+    if (one_input_hash_gadget() != 1) return -1;
 
     return 0;
 }
