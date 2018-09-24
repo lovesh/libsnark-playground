@@ -19,7 +19,7 @@ bool mimc1() {
     xL.allocate(pb, "xL");
     xR.allocate(pb, "xR");
 
-    LongsightF5p5_gadget<FieldT> g(pb, xL, xR, "mimcf5p5");
+    LongsightF5p3_gadget<FieldT> g(pb, xL, xR, "mimcf5p5");
 
     g.generate_r1cs_constraints();
 
@@ -182,21 +182,37 @@ int main() {
     }
     */
 
-    protoboard<FieldT> pb;
-    pb_variable<FieldT> xL;
-    pb_variable<FieldT> xR;
+    {
+        protoboard<FieldT> pb;
+        pb_variable<FieldT> xL;
+        pb_variable<FieldT> xR;
 
-    xL.allocate(pb, "xL");
-    xR.allocate(pb, "xR");
+        xL.allocate(pb, "xL");
+        xR.allocate(pb, "xR");
 
-    auto expected_L = FieldT("21871881226116355513319084168586976250335411806112527735069209751513595455673");
-    auto expected_R = FieldT("55049861378429053168722197095693172831329974911537953231866155060049976290");
+        auto expected_L = FieldT("21871881226116355513319084168586976250335411806112527735069209751513595455673");
+        auto expected_R = FieldT("55049861378429053168722197095693172831329974911537953231866155060049976290");
 
-    if (!mimc_fiestel<LongsightF_gadget>(pb, xL, xR, 322, 1, expected_L, expected_R)) {
-        return -1;
+        cout << "Exponentiation (x^3) " << endl;
+        if (!mimc_fiestel<LongsightF_gadget>(pb, xL, xR, 322, 1, expected_L, expected_R)) {
+            return -1;
+        }
     }
-    if (!mimc_fiestel<LongsightFInv_gadget>(pb, xL, xR, 322, 1, expected_L, expected_R)) {
-        return -1;
+
+    {
+        protoboard<FieldT> pb;
+        pb_variable<FieldT> xL;
+        pb_variable<FieldT> xR;
+
+        xL.allocate(pb, "xL");
+        xR.allocate(pb, "xR");
+
+        auto expected_L = FieldT("21871881226116355513319084168586976250335411806112527735069209751513595455673");
+        auto expected_R = FieldT("55049861378429053168722197095693172831329974911537953231866155060049976290");
+        cout << "Inverse " << endl;
+        if (!mimc_fiestel<LongsightFInv_gadget>(pb, xL, xR, 322, 1, expected_L, expected_R)) {
+            return -1;
+        }
     }
     return 0;
 }

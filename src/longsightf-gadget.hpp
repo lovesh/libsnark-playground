@@ -149,7 +149,7 @@ public:
 };
 
 template<typename FieldT>
-void LongsightF5p5_constants_fill( std::vector<FieldT> &round_constants )
+void LongsightF5p3_constants_fill(std::vector<FieldT> &round_constants)
 {
     round_constants.resize(5);
     round_constants[0] = FieldT("16141228610716254494246418850894227058386854269090431665976591549148070459029");
@@ -161,33 +161,33 @@ void LongsightF5p5_constants_fill( std::vector<FieldT> &round_constants )
 
 
 template<typename FieldT>
-const std::vector<FieldT> LongsightF5p5_constants_assign( )
+const std::vector<FieldT> LongsightF5p3_constants_assign()
 {
     std::vector<FieldT> round_constants;
 
-    LongsightF5p5_constants_fill<FieldT>(round_constants);
+    LongsightF5p3_constants_fill<FieldT>(round_constants);
 
     return round_constants;
 }
 
 template<typename FieldT>
-class LongsightF5p5_gadget : public LongsightF_gadget<FieldT>
+class LongsightF5p3_gadget : public LongsightF_gadget<FieldT>
 {
 public:
-    LongsightF5p5_gadget(
+    LongsightF5p3_gadget(
             protoboard<FieldT> &in_pb,
             const pb_variable<FieldT> &in_x_L,
             const pb_variable<FieldT> &in_x_R,
             const std::string &in_annotation_prefix=""
     ) :
-            LongsightF_gadget<FieldT>(in_pb, LongsightF5p5_constants_assign<FieldT>(), in_x_L, in_x_R, in_annotation_prefix, false)
+            LongsightF_gadget<FieldT>(in_pb, LongsightF5p3_constants_assign<FieldT>(), in_x_L, in_x_R, in_annotation_prefix, false)
     {
         this->allocate();
     }
 };
 
 template<typename FieldT>
-void LongsightF152p5_constants_fill( std::vector<FieldT> &round_constants )
+void LongsightF152p3_constants_fill(std::vector<FieldT> &round_constants)
 {
     round_constants.resize(152);
     round_constants[0] = FieldT("7417153685071709436870056242523351150140358124568764639615525440932715960778");
@@ -350,17 +350,17 @@ const std::vector<FieldT> LongsightF152p5_constants_assign( )
 {
     std::vector<FieldT> round_constants;
 
-    LongsightF152p5_constants_fill<FieldT>(round_constants);
+    LongsightF152p3_constants_fill<FieldT>(round_constants);
 
     return round_constants;
 }
 
 
 template<typename FieldT>
-class LongsightF152p5_gadget : public LongsightF_gadget<FieldT>
+class LongsightF152p3_gadget : public LongsightF_gadget<FieldT>
 {
 public:
-    LongsightF152p5_gadget(
+    LongsightF152p3_gadget(
             protoboard<FieldT> &in_pb,
             const pb_variable<FieldT> &in_x_L,
             const pb_variable<FieldT> &in_x_R,
@@ -381,7 +381,7 @@ public:
 
 
 
-
+// In each round, instead of exponentiation like x^3 or x^5, inverse x^-1 is taken
 template<typename FieldT>
 class LongsightFInv_gadget : public gadget<FieldT>
 {
@@ -447,7 +447,7 @@ public:
             // -------------------------------------------------
             // Inverse
 
-            // (xL+C[i]) * (xL+C[i]) = j[1]
+            // (xL+C[i]) * (xL+C[i])^-1 = 1
             this->pb.add_r1cs_constraint(
                     r1cs_constraint<FieldT>(
                             round_constants[i] + xL,
@@ -457,7 +457,7 @@ public:
             // -------------------------------------------------
             // Intermediate outputs
 
-            // ((j[(1+i)*4 + 3] + xR) * 1) = x[i]
+            // (((xL+C[i])^-1 + xR) * 1) = x[i]
             this->pb.add_r1cs_constraint(
                     r1cs_constraint<FieldT>(
                             1,
@@ -465,7 +465,7 @@ public:
                             rounds[i]));
 
             // -------------------------------------------------
-            // Move to next block of squares
+            // Move to next block
             j++;
         }
     }
@@ -482,15 +482,14 @@ public:
 
             const FieldT& xL = (i == 0 ? this->pb.val(start_L) : this->pb.val(rounds[i-1]));
 
-            // Intermediate squarings
+            // Inverse
             auto t = xL + round_constants[i];
             this->pb.val(round_inverses[h]) = t.inverse();
 
             // Then intermediate X point
             this->pb.val(rounds[i]) = xR + this->pb.val(round_inverses[h]);
 
-            // Next block of intermediate squarings
-            h++;
+            // Next block            h++;
         }
     }
 };
