@@ -489,7 +489,8 @@ public:
             // Then intermediate X point
             this->pb.val(rounds[i]) = xR + this->pb.val(round_inverses[h]);
 
-            // Next block            h++;
+            // Next block
+            h++;
         }
     }
 };
