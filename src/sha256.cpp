@@ -84,7 +84,7 @@ void two_inputs_hash_gadget() {
     cout << "two_inputs_hash_gadget => Verfied: " << verified1 << endl;
 }
 
-int one_input_hash_gadget() {
+int one_input_hash_gadget(int num_iterations) {
     using namespace std::chrono;
 
     protoboard<FieldT> pb;
@@ -95,13 +95,12 @@ int one_input_hash_gadget() {
     r1cs_ppzksnark_keypair<default_r1cs_ppzksnark_pp> keypair = setup_gadget(pb, input, output, f);
 
     int i = 0;
-    int iterations = 10;
 
     duration<double> tc(0);
     duration<double> tp(0);
     duration<double> tv(0);
 
-    while (i < iterations) {
+    while (i < num_iterations) {
         // Hash of string "hello world"
         const libff::bit_vector hash_bv = libff::int_list_to_bits({0xc082e440, 0x671cd799, 0x8baf04c0, 0x22c07e03, 0x4b125ee7, 0xd28e0a59, 0x49e4b924, 0x5f5cf897}, 32);
         output->generate_r1cs_witness(hash_bv);
@@ -135,10 +134,14 @@ int one_input_hash_gadget() {
 
         cout << "one_input_hash_gadget => Verfied: " << verified1 << endl;
 
+        /*cout << "primary_input: " << pb.primary_input() << endl;
+
+        cout << "auxiliary_input: " << pb.auxiliary_input() << endl;*/
+
         i++;
     }
 
-    cout << "Total iterations : " << iterations << endl;
+    cout << "Total iterations : " << num_iterations << endl;
     cout << "Total constraint generation time (seconds): " << tc.count() << endl;
     cout << "Total proving time (seconds): " << tp.count() << endl;
     cout << "Total verification time (seconds): " << tv.count() << endl;
@@ -152,9 +155,11 @@ int main() {
 
     default_r1cs_ppzksnark_pp::init_public_params();
 
-    two_inputs_hash_gadget();
+    int num_iterations = 1;
 
-    if (one_input_hash_gadget() != 1) return -1;
+//    two_inputs_hash_gadget();
+
+    if (one_input_hash_gadget(num_iterations) != 1) return -1;
 
     return 0;
 }
