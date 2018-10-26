@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <iostream>
-#include <chrono>
 
 #include "libsnark/zk_proof_systems/ppzksnark/r1cs_ppzksnark/r1cs_ppzksnark.hpp"
 #include "libsnark/common/default_types/r1cs_ppzksnark_pp.hpp"
@@ -432,6 +431,11 @@ public:
     void generate_r1cs_constraints()
     {
         size_t j = 0;
+
+        /*auto l = this->pb.val(this->start_L);
+        auto r = this->pb.val(this->start_R);
+        std::cout << "start_L is " << l << std::endl;
+        std::cout << "start_R is " << r << std::endl;*/
 
         for( size_t i = 0; i < round_constants.size() - 2; i++ )
         {

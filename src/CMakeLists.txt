@@ -127,3 +127,21 @@ target_include_directories(
         ${DEPENDS_DIR}/libsnark
         ${DEPENDS_DIR}/libsnark/depends/libfqfft
 )
+
+add_executable(
+        sharkmimc
+
+        sharkmimc.cpp
+)
+target_link_libraries(
+        sharkmimc
+
+        snark
+)
+target_include_directories(
+        sharkmimc
+
+        PUBLIC
+        ${DEPENDS_DIR}/libsnark
+        ${DEPENDS_DIR}/libsnark/depends/libfqfft
+)
