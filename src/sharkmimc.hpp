@@ -45,7 +45,7 @@ public:
             modulus(modulus), input(input)
     {
 //        sbox_vals.allocate(in_pb, num_branches + (total_rounds - middle_rounds) * num_branches + middle_rounds + num_branches, FMT(in_annotation_prefix, " sbox_vals"));
-        sbox_vals.allocate(in_pb, num_branches + 3 * (num_branches + num_branches) + middle_rounds * (1 + num_branches) + 2 * (num_branches + num_branches) + num_branches + num_branches, FMT(in_annotation_prefix, " sbox_vals"));
+        sbox_vals.allocate(in_pb, num_branches + 3 * num_branches + middle_rounds * num_branches + 2 * num_branches + num_branches, FMT(in_annotation_prefix, " sbox_vals"));
 
         linear_vals.allocate(in_pb, total_rounds * num_branches, FMT(in_annotation_prefix, " linear_vals"));
 
@@ -169,8 +169,7 @@ public:
             for(uint32_t i = 0; i < this->num_branches; i++) {
                 // Add round key
                 auto t = sbox_vals[offset+i-this->num_branches] + round_keys[round_keys_offset++];
-
-                cout << "Round 1-3 inner loop " << round_no << offset << i << endl;
+                
 //                auto t1 = sbox_vals[p] + sbox_vals[l];
 
                 // S-box
@@ -232,7 +231,7 @@ public:
         }
 
 
-        cout << "Leaving generate_r1cs_constraints" << endl;
+        cout << "Leaving generate_r1cs_constraints " << endl;
     }
 
     void generate_r1cs_witness() {
