@@ -10,6 +10,70 @@
 
 using namespace libsnark;
 
+/**
+* The LongsightF function can be represented as a circuit:
+*
+*         L       R
+*        x_1     x_0
+*         _       _
+*         |       |
+*         |--------------------.
+*         |       |            |
+*         v       |            |
+* C_0 |->(+)      |            |    j[i] = x[i+1] + C[i]
+*         |       |            |
+*         v       |            |
+*       (^5)      |            |    k[i] = j[i]^5
+*         |       v            |
+*          `---->(+) = x_2     |  x[i+2] = x[i] + k[i]
+*                      _       |
+*                      |       |
+*                      |--------------------.
+*                      |       |            |
+*                      v       |            |
+*              C_i |->(+)      |            |
+*                      |       |            |
+*                      v       |            |
+*                    (^5)      |            |
+*                      |       v            |
+*                      `----->(+) = x_(i+2) |
+*                                   _       |
+*                                   |       |
+*                                   v       |
+*                       C_(i-1) |->(+)      |
+*                                   |       |
+*                                   v       |
+*                                  (^5)     |
+*                                   |       v
+*                                   `----->(+) = output
+*
+*  The round function can be expressed as:
+*
+*       x[i+2] = x[i] + (x[i+1] + C[i])^5
+*
+*  Where x[] must start with at least 2 values
+*
+*  If the values x[0] and x[1] are the variables L and R
+*  and x[] is going to be the intermediate state of the function
+*  then the first two rounds must substitute those variables, e.g.
+*
+*       x[0] = R      + (L      + C[i])^5          when i = 0
+*       x[1] = L      + (x[i-1] + C[i])^5          when i = 1
+*       x[i] = x[i-2] + (x[i-1] + C[i])^5          when i > 1
+*
+*       output = x[ len(x) - 1 ]
+*
+*  Knowing the value of x2, x1 and C then x0 can be easily found, while
+*  only knowing x0, C and the result finding x1 isn't as trivial.
+*
+* (%i1) solve([ x[2] = x[0] + (C+x[1])^5 ], [x[2]]);
+*
+*                 5         4       2  3       3  2      4      5
+* (%o1)    [x  = C  + 5 x  C  + 10 x  C  + 10 x  C  + 5 x  C + x  + x ]
+*            2           1          1          1         1      1    0
+*
+*/
+
 template<typename FieldT>
 class LongsightF_gadget : public gadget<FieldT>
 {
