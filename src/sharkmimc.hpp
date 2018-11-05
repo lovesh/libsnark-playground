@@ -21,11 +21,9 @@ private:
     const uint32_t branch_size = 32;
     static const uint32_t num_branches = 4;
     static const uint32_t middle_rounds = 38;
-    static const uint32_t total_rounds = 3 + 38 + 3;
+    static const uint32_t total_rounds = 3 + middle_rounds + 3;
     static const uint32_t num_round_keys = (middle_rounds + 7) * num_branches;
     static const uint32_t num_round_constants = (middle_rounds + 6) * num_branches;
-    const uint32_t branches_x_gate_size = num_branches * gate_size;
-    const uint32_t branches_x_branch_size = num_branches * branch_size;
     const FieldT modulus;
     FieldT matrix_1[num_branches][num_branches];
     FieldT matrix_2[num_branches][num_branches];
