@@ -153,8 +153,6 @@ public:
 
     void generate_r1cs_constraints() {
 
-//        cout << "Entering generate_r1cs_constraints" << endl;
-
         for(uint32_t i = 0; i < this->num_branches; i++) {
             sbox_vals[i] = this->input[i];
         }
@@ -169,11 +167,9 @@ public:
             uint32_t prev_offset = offset - this->num_branches;
             // 4 S-boxes, 8 constraints
             for(uint32_t i = 0; i < this->num_branches; i++) {
-//                cout << "Round no sbox_vals index sbox_outs index round_squares index round_keys index " << round_no << " " << prev_offset+i << " " << sbox_outs_idx << " " << round_squares_idx << " " << round_keys_offset << endl;
 
                 // Add round key
                 auto t = sbox_vals[prev_offset+i] + round_keys[round_keys_offset++];
-//                auto t1 = sbox_vals[p] + sbox_vals[l];
 
                 // S-box
                 this->pb.add_r1cs_constraint(
@@ -184,13 +180,9 @@ public:
             }
         }
 
-//        cout << "1. generate_r1cs_constraints" << endl;
-
         for(; round_no <= 3+middle_rounds; round_no++) {
 
             uint32_t offset = round_no * this->num_branches;
-
-//            cout << "Round no sbox_vals index sbox_outs index round_squares index round_keys index " << round_no << " " << offset-this->num_branches << " " << sbox_outs_idx << " " << round_squares_idx << " " << round_keys_offset << endl;
 
             // Add round key, only 1 `sbox_vals` is changed
             auto t = sbox_vals[offset-this->num_branches] + round_keys[round_keys_offset];
@@ -205,8 +197,6 @@ public:
             round_squares_idx++;
         }
 
-//        cout << "2. generate_r1cs_constraints" << endl;
-
         for(; round_no <= 3+middle_rounds+2; round_no++) {
 
             uint32_t offset = round_no * this->num_branches;
@@ -214,8 +204,6 @@ public:
 
             // 4 S-boxes, 8 constraints
             for(uint32_t i = 0; i < this->num_branches; i++) {
-
-//                cout << "Round no sbox_vals index sbox_outs index round_squares index round_keys index " << round_no << " " << prev_offset+i << " " << sbox_outs_idx << " " << round_squares_idx << " " << round_keys_offset << endl;
 
                 // Add round key
                 auto t = sbox_vals[prev_offset+i] + round_keys[round_keys_offset++];
@@ -229,14 +217,10 @@ public:
             }
         }
 
-//        cout << "3. generate_r1cs_constraints" << endl;
-
         uint32_t offset = round_no * this->num_branches;
         uint32_t prev_offset = offset - this->num_branches;
 
         for(uint32_t i = 0; i < this->num_branches; i++) {
-
-//            cout << "Round no sbox_vals index sbox_outs index round_squares index round_keys index " << round_no << " " << prev_offset+i << " " << sbox_outs_idx << " " << round_squares_idx <<  " " << round_keys_offset << endl;
 
             // Add round key
             auto t = sbox_vals[prev_offset+i] + round_keys[round_keys_offset++];
@@ -248,17 +232,11 @@ public:
             round_squares_idx++;
             round_keys_offset++;
         }
-
-
-//        cout << "Leaving generate_r1cs_constraints " << endl;
     }
 
     void generate_r1cs_witness() {
 
-//        cout << "Entering generate_r1cs_witness" << endl;
-
         vector<FieldT> field_elems = this->input.get_vals(this->pb);
-//        cout << "field_elems size is " << field_elems.size() << endl;
 
         for(uint32_t i = 0; i < this->num_branches; i++) {
             this->pb.val(sbox_vals[i]) = field_elems[i];
@@ -278,8 +256,6 @@ public:
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
 
-//                cout << "round_squares index from sbox_vals index and round keys index " << round_squares_idx << " " << prev_offset+j << " " << round_keys_offset << endl;
-
                 auto t = this->pb.val(sbox_vals[prev_offset+j]) + round_keys[round_keys_offset++];
 
                 this->pb.val(round_squares[round_squares_idx]) = t * t;
@@ -295,19 +271,14 @@ public:
             }
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
-//                cout << "Round no sbox_vals " << round_no << " " << offset+j << endl;
                 this->pb.val(sbox_vals[offset+j]) = linear[j];
             }
         }
-
-//        cout << "1. generate_r1cs_witness" << endl;
 
         for(; round_no <= 3+middle_rounds; round_no++) {
 
             uint32_t offset = round_no * this->num_branches;
             uint32_t prev_offset = offset - this->num_branches;
-
-//            cout << "round_squares index from sbox_vals index and round keys index " << round_squares_idx << " " << prev_offset << " " << round_keys_offset << endl;
 
             auto t = this->pb.val(sbox_vals[prev_offset]) + round_keys[round_keys_offset++];
 
@@ -326,14 +297,11 @@ public:
             }
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
-//                cout << "Round no sbox_vals " << round_no << " " << offset+j << endl;
                 this->pb.val(sbox_vals[offset+j]) = linear[j];
             }
 
             round_squares_idx++;
         }
-
-//        cout << "2. generate_r1cs_witness" << endl;
 
         for(; round_no <= 3+middle_rounds+2; round_no++) {
 
@@ -343,8 +311,6 @@ public:
             vector<FieldT> linear(this->num_branches, 0);
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
-
-//                cout << "round_squares index from sbox_vals index and round keys index " << round_squares_idx << " " << prev_offset+j << " " << round_keys_offset << endl;
 
                 auto t = this->pb.val(sbox_vals[prev_offset+j]) + round_keys[round_keys_offset++];
 
@@ -362,7 +328,6 @@ public:
             }
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
-//                cout << "Round no sbox_vals " << round_no << " " << offset+j << endl;
                 this->pb.val(sbox_vals[offset+j]) = linear[j];
             }
         }
@@ -373,20 +338,15 @@ public:
         for(uint32_t i = 0; i < this->num_branches; i++) {
             uint32_t k = offset + i;
 
-//            cout << "round_squares index from sbox_vals index and round keys index " << round_squares_idx << " " << prev_offset+i << " " << round_keys_offset << endl;
-
             auto t = this->pb.val(sbox_vals[prev_offset+i]) + round_keys[round_keys_offset++];
 
             this->pb.val(round_squares[round_squares_idx]) = t * t;
             this->pb.val(sbox_outs[sbox_outs_idx]) = this->pb.val(round_squares[round_squares_idx]) * t;
 
-//            cout << "Round no sbox_vals " << round_no << " " << k << endl;
             this->pb.val(sbox_vals[k]) = this->pb.val(sbox_outs[sbox_outs_idx++]) + round_keys[round_keys_offset++];
 
             round_squares_idx++;
         }
-
-//        cout << "3. generate_r1cs_witness" << endl;
 
         offset = sbox_vals.size() - this->num_branches;
 
@@ -394,138 +354,6 @@ public:
             this->pb.val(output[i]) = this->pb.val(sbox_vals[offset+i]);
         }
 
-//        cout << "Leaving generate_r1cs_witness" << endl;
     }
-
-    /*void generate_r1cs_constraints() {
-
-        cout << "Entering generate_r1cs_constraints" << endl;
-
-        pb_variable<FieldT> value_branch_temp_1;
-        linear_combination<FieldT> ins[num_branches];   //symbolical sbox inputs
-
-        for(uint32_t i = 0; i < this->num_branches; i++) {
-            sbox_vals[i] = this->input[i];
-            ins[i] = this->input[i]; //initially just input variables;
-        }
-
-        uint32_t round_no = 1;
-        uint32_t round_keys_offset = 0;
-        uint32_t sbox_outs_idx = 0;
-
-
-        for(; round_no <= 3; round_no++) {
-            uint32_t offset = round_no * this->num_branches;
-
-            // 4 S-boxes, 8 constraints
-            for(uint32_t i = 0; i < this->num_branches; i++) {
-                // Add round key
-                auto t = ins[i]+round_keys[round_keys_offset++]; //adding the key ;
-
-                cout << "Round 1-3 inner loop " << round_no << offset << i << endl;
-//                auto t1 = sbox_vals[p] + sbox_vals[l];
-
-                // S-box
-                this->pb.add_r1cs_constraint(
-                        r1cs_constraint<FieldT>(t, t, value_branch_temp_1));
-                this->pb.add_r1cs_constraint(
-                        r1cs_constraint<FieldT>(value_branch_temp_1, t, sbox_outs[sbox_outs_idx++]));
-
-            }
-            for(uint32_t i=0; i<num_branches; ++i) //sbox inputs of the next round are linear                /                               //combination of the sbox outputs of the current round
-            {
-                ins[i] = 0;
-                for(uint32_t j=0; j<num_branches; ++j)
-                {
-                    ins[i] = ins[i] + this->matrix_2[i][j]*sbox_outs[sbox_outs_idx-num_branches+j];
-                }
-            }
-        }
-
-        cout << "1. generate_r1cs_constraints" << endl;
-
-        for(; round_no <= 3+middle_rounds; round_no++) {
-
-            uint32_t offset = round_no * this->num_branches;
-
-            // Add round key, only 1 `sbox_vals` is changed
-            auto t = ins[0] + round_keys[round_keys_offset];
-
-            round_keys_offset += this->num_branches;
-
-            // S-box
-            this->pb.add_r1cs_constraint(
-                    r1cs_constraint<FieldT>(t, t, value_branch_temp_1));
-            this->pb.add_r1cs_constraint(
-                    r1cs_constraint<FieldT>(value_branch_temp_1, t, sbox_outs[sbox_outs_idx++]));
-
-            linear_combination<FieldT> ins_temp[num_branches];
-
-            for(uint32_t i=0; i<num_branches; ++i) // inputs of the next round are linear                /                           //combination of the outputs of the current round except for one sbox
-            {
-                ins_temp[i] = (i==0)?(sbox_outs[sbox_outs_idx-1]):ins[i]; //storing in temp var
-                ins[i]=0;
-            }
-
-            for(uint32_t i=0; i<num_branches; ++i)
-            {
-                for(uint32_t j=0; j<num_branches; ++j)
-                {
-                    ins[i] = ins[i] + this->matrix_2[i][j]*ins_temp[j]; //applying the linear transformation
-                }
-            }
-
-        }
-
-        cout << "2. generate_r1cs_constraints" << endl;
-
-        for(; round_no <= 3+middle_rounds+2; round_no++) {
-
-            uint32_t offset = round_no * this->num_branches;
-
-            // 4 S-boxes, 8 constraints
-            for(uint32_t i = 0; i < this->num_branches; i++) {
-                // Add round key
-                auto t = ins[i]+ round_keys[round_keys_offset++];
-
-                // S-box
-                this->pb.add_r1cs_constraint(
-                        r1cs_constraint<FieldT>(t, t, value_branch_temp_1));
-                this->pb.add_r1cs_constraint(
-                        r1cs_constraint<FieldT>(value_branch_temp_1, t, sbox_outs[sbox_outs_idx++]));
-            }
-            for(uint32_t i=0; i<num_branches; ++i) //sbox inputs of the next round are linear                /                               //combination of the sbox outputs of the current round
-            {
-                ins[i] = 0;
-                for(uint32_t j=0; j<num_branches; ++j)
-                {
-                    ins[i] = ins[i] + this->matrix_2[i][j]*sbox_outs[sbox_outs_idx-num_branches+j];
-                }
-            }
-        }
-
-        cout << "3. generate_r1cs_constraints" << endl;
-
-        uint32_t offset = round_no * this->num_branches;
-        for(uint32_t i = 0; i < this->num_branches; i++) {
-            // Add round key
-            auto t = ins[i] + round_keys[round_keys_offset++];
-
-            this->pb.add_r1cs_constraint(
-                    r1cs_constraint<FieldT>(t, t, value_branch_temp_1));
-            this->pb.add_r1cs_constraint(
-                    r1cs_constraint<FieldT>(value_branch_temp_1, t, sbox_outs[sbox_outs_idx++]));
-        }
-
-
-
-        cout << "Leaving generate_r1cs_constraints" << endl;
-    }
-
-    void generate_r1cs_witness() {
-
-        cout << "Entering generate_r1cs_witness" << endl;
-
-    }*/
 
 };
