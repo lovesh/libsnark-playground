@@ -47,7 +47,7 @@ public:
 
         round_squares.allocate(in_pb, 3 * num_branches + middle_rounds + 2 * num_branches + num_branches, FMT(in_annotation_prefix, " round_squares"));
 
-        sbox_outs.allocate(in_pb, 124, FMT(in_annotation_prefix, " sbox_outs"));
+        sbox_outs.allocate(in_pb, 3 * num_branches + middle_rounds + 2 * num_branches + num_branches, FMT(in_annotation_prefix, " sbox_outs"));
 
         output.allocate(in_pb, this->num_branches, FMT(in_annotation_prefix, " output"));
     }
@@ -232,6 +232,8 @@ public:
             round_squares_idx++;
             round_keys_offset++;
         }
+
+        cout << "sbox_outs_idx is " << sbox_outs_idx << endl;
     }
 
     void generate_r1cs_witness() {
