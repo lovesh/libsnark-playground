@@ -60,11 +60,11 @@ int main() {
     g.generate_r1cs_witness();
 
     cout << "Satisfied status: " << pb.is_satisfied() << endl;
-    cout << "Result: " << endl;
+    /*cout << "Result: " << endl;
     cout << pb.val(g.result()[0]) << endl;
     cout << pb.val(g.result()[1]) << endl;
     cout << pb.val(g.result()[2]) << endl;
-    cout << pb.val(g.result()[3]) << endl;
+    cout << pb.val(g.result()[3]) << endl;*/
 
     const r1cs_ppzksnark_proof<default_r1cs_ppzksnark_pp> proof = r1cs_ppzksnark_prover<default_r1cs_ppzksnark_pp>(
             keypair.pk, pb.primary_input(), pb.auxiliary_input());
