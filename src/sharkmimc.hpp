@@ -155,18 +155,28 @@ public:
         auto t = sbox_vals[sbox_vals_idx] + round_keys[round_keys_offset];
 
         // S-box
-        this->pb.add_r1cs_constraint(
+
+        // The 2 lines make S-box as x^3
+        /*this->pb.add_r1cs_constraint(
                 r1cs_constraint<FieldT>(t, t, round_squares[round_squares_idx]));
         this->pb.add_r1cs_constraint(
-                r1cs_constraint<FieldT>(round_squares[round_squares_idx], t, sbox_outs[sbox_outs_idx]));
+                r1cs_constraint<FieldT>(round_squares[round_squares_idx], t, sbox_outs[sbox_outs_idx]));*/
+
+        // The next line makes S-box as x^-1
+        this->pb.add_r1cs_constraint(
+                r1cs_constraint<FieldT>(t, sbox_outs[sbox_outs_idx], 1));
     }
 
     void generate_sbox_witness(uint32_t sbox_vals_idx, uint32_t round_keys_offset,
                                uint32_t round_squares_idx, uint32_t sbox_outs_idx) {
         auto t = this->pb.val(sbox_vals[sbox_vals_idx]) + round_keys[round_keys_offset];
 
-        this->pb.val(round_squares[round_squares_idx]) = t * t;
-        this->pb.val(sbox_outs[sbox_outs_idx]) = this->pb.val(round_squares[round_squares_idx]) * t;
+        // The 2 lines make S-box as x^3
+        /*this->pb.val(round_squares[round_squares_idx]) = t * t;
+        this->pb.val(sbox_outs[sbox_outs_idx]) = this->pb.val(round_squares[round_squares_idx]) * t;*/
+
+        // The next line makes S-box as x^-1
+        this->pb.val(sbox_outs[sbox_outs_idx]) = t.inverse();
     }
 
     void generate_r1cs_constraints() {
