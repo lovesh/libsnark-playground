@@ -177,7 +177,7 @@ public:
 
     virtual void generate_sbox_witness(uint32_t linear_vals_idx, uint32_t round_keys_offset,
                                           uint32_t sbox_outs_idx) = 0;
-    
+
     void generate_r1cs_constraints() {
 
         for(uint32_t i = 0; i < this->num_branches; i++) {

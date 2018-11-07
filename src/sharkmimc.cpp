@@ -10,9 +10,8 @@ using namespace std::chrono;
 typedef libff::Fr<default_r1cs_ppzksnark_pp> FieldT;
 
 
-int main() {
-    default_r1cs_ppzksnark_pp::init_public_params();
-
+template <template <typename> class G>
+void test_SharkMiMC() {
     protoboard<FieldT> pb;
     pb_variable_array<FieldT> input;
 
@@ -27,7 +26,7 @@ int main() {
     auto i2 = FieldT("21871881226116355513319084168586976250335411806112527735069209751513595455673");
     auto i3 = FieldT("55049861378429053168722197095693172831329974911537953231866155060049976290");
 
-    SharkMimc_inverse_gadget<FieldT> g_inv(FieldT::mod, pb, input, "Sharkmimc inverse gadget");
+    G<FieldT> g_inv(FieldT::mod, pb, input, "Sharkmimc inverse gadget");
 
     g_inv.prepare_round_constants();
     g_inv.prepare_matrix_1();
@@ -74,5 +73,16 @@ int main() {
 
     cout << "Total constraint generation time (seconds): " << tc.count() << endl;
     cout << "Total proving time (seconds): " << tp.count() << endl;
+}
+
+int main() {
+    default_r1cs_ppzksnark_pp::init_public_params();
+
+    cout << "----------- Run SharkMiMC using x^3 as S-box ----------------" << endl;
+    test_SharkMiMC<SharkMimc_cube_gadget>();
+
+    cout << "----------- Run SharkMiMC using x^-1 as S-box ---------------" << endl;
+    test_SharkMiMC<SharkMimc_inverse_gadget>();
+
     return 0;
 }
