@@ -15,7 +15,7 @@ using namespace libsnark;
 template<typename FieldT>
 class SharkMimc_gadget : public gadget<FieldT>
 {
-private:
+protected:
     /*const static uint32_t key_size = 32;
     const u_char key[key_size] = {};*/
     const static uint32_t block_size = 256;
@@ -44,8 +44,6 @@ public:
             modulus(modulus), input(input)
     {
         linear_vals.allocate(in_pb, num_branches + 3 * num_branches + middle_rounds * num_branches + 2 * num_branches + num_branches, FMT(in_annotation_prefix, " linear_vals"));
-
-        round_squares.allocate(in_pb, 3 * num_branches + middle_rounds + 2 * num_branches + num_branches, FMT(in_annotation_prefix, " round_squares"));
 
         sbox_outs.allocate(in_pb, 3 * num_branches + middle_rounds + 2 * num_branches + num_branches, FMT(in_annotation_prefix, " sbox_outs"));
 
@@ -174,36 +172,12 @@ public:
         return output;
     }
 
-    void generate_sbox_constraint(uint32_t linear_vals_idx, uint32_t round_keys_offset,
-            uint32_t round_squares_idx, uint32_t sbox_outs_idx) {
-        // Add round key
-        auto t = linear_vals[linear_vals_idx] + round_keys[round_keys_offset];
+    virtual void generate_sbox_constraint(uint32_t linear_vals_idx, uint32_t round_keys_offset,
+                                          uint32_t sbox_outs_idx) = 0;
 
-        // S-box
-
-        // The 2 lines make S-box as x^3
-        /*this->pb.add_r1cs_constraint(
-                r1cs_constraint<FieldT>(t, t, round_squares[round_squares_idx]));
-        this->pb.add_r1cs_constraint(
-                r1cs_constraint<FieldT>(round_squares[round_squares_idx], t, sbox_outs[sbox_outs_idx]));*/
-
-        // The next line makes S-box as x^-1
-        this->pb.add_r1cs_constraint(
-                r1cs_constraint<FieldT>(t, sbox_outs[sbox_outs_idx], 1));
-    }
-
-    void generate_sbox_witness(uint32_t linear_vals_idx, uint32_t round_keys_offset,
-                               uint32_t round_squares_idx, uint32_t sbox_outs_idx) {
-        auto t = this->pb.val(linear_vals[linear_vals_idx]) + round_keys[round_keys_offset];
-
-        // The 2 lines make S-box as x^3
-        /*this->pb.val(round_squares[round_squares_idx]) = t * t;
-        this->pb.val(sbox_outs[sbox_outs_idx]) = this->pb.val(round_squares[round_squares_idx]) * t;*/
-
-        // The next line makes S-box as x^-1
-        this->pb.val(sbox_outs[sbox_outs_idx]) = t.inverse();
-    }
-
+    virtual void generate_sbox_witness(uint32_t linear_vals_idx, uint32_t round_keys_offset,
+                                          uint32_t sbox_outs_idx) = 0;
+    
     void generate_r1cs_constraints() {
 
         for(uint32_t i = 0; i < this->num_branches; i++) {
@@ -212,7 +186,6 @@ public:
 
         uint32_t round_no = 1;
         uint32_t round_keys_offset = 0;
-        uint32_t round_squares_idx = 0;
         uint32_t sbox_outs_idx = 0;
 
         for(; round_no <= 3; round_no++) {
@@ -221,10 +194,9 @@ public:
             // 4 S-boxes, 8 constraints
             for(uint32_t i = 0; i < this->num_branches; i++) {
 
-                this->generate_sbox_constraint(prev_offset+i, round_keys_offset, round_squares_idx, sbox_outs_idx);
+                this->generate_sbox_constraint(prev_offset+i, round_keys_offset, sbox_outs_idx);
                 round_keys_offset++;
                 sbox_outs_idx++;
-                round_squares_idx++;
             }
         }
 
@@ -232,11 +204,10 @@ public:
 
             uint32_t offset = round_no * this->num_branches;
 
-            this->generate_sbox_constraint(offset-this->num_branches, round_keys_offset, round_squares_idx, sbox_outs_idx);
+            this->generate_sbox_constraint(offset-this->num_branches, round_keys_offset, sbox_outs_idx);
 
             round_keys_offset += this->num_branches;
             sbox_outs_idx++;
-            round_squares_idx++;
         }
 
         for(; round_no <= 3+middle_rounds+2; round_no++) {
@@ -247,9 +218,8 @@ public:
             // 4 S-boxes, 8 constraints
             for(uint32_t i = 0; i < this->num_branches; i++) {
 
-                this->generate_sbox_constraint(prev_offset+i, round_keys_offset, round_squares_idx, sbox_outs_idx);
+                this->generate_sbox_constraint(prev_offset+i, round_keys_offset, sbox_outs_idx);
                 round_keys_offset++;
-                round_squares_idx++;
                 sbox_outs_idx++;
             }
         }
@@ -259,10 +229,9 @@ public:
 
         for(uint32_t i = 0; i < this->num_branches; i++) {
 
-            this->generate_sbox_constraint(prev_offset+i, round_keys_offset, round_squares_idx, sbox_outs_idx);
+            this->generate_sbox_constraint(prev_offset+i, round_keys_offset, sbox_outs_idx);
 
             sbox_outs_idx++;
-            round_squares_idx++;
             round_keys_offset += 2;
         }
     }
@@ -277,7 +246,6 @@ public:
 
         uint32_t round_no = 1;
         uint32_t round_keys_offset = 0;
-        uint32_t round_squares_idx = 0;
         uint32_t sbox_outs_idx = 0;
 
         for(; round_no <= 3; round_no++) {
@@ -288,7 +256,7 @@ public:
             vector<FieldT> linear(this->num_branches, 0);
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
-                this->generate_sbox_witness(prev_offset+j, round_keys_offset, round_squares_idx, sbox_outs_idx);
+                this->generate_sbox_witness(prev_offset+j, round_keys_offset, sbox_outs_idx);
 
                 auto s = this->pb.val(sbox_outs[sbox_outs_idx]);
 
@@ -297,7 +265,6 @@ public:
                     linear[i] = linear[i] + temp;
                 }
 
-                round_squares_idx++;
                 round_keys_offset++;
                 sbox_outs_idx++;
             }
@@ -312,14 +279,14 @@ public:
             uint32_t offset = round_no * this->num_branches;
             uint32_t prev_offset = offset - this->num_branches;
 
-            this->generate_sbox_witness(prev_offset, round_keys_offset, round_squares_idx, sbox_outs_idx);
+            this->generate_sbox_witness(prev_offset, round_keys_offset, sbox_outs_idx);
 
             round_keys_offset++;
 
             vector<FieldT> linear(this->num_branches, 0);
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
-                auto s = j == 0? this->pb.val(sbox_outs[sbox_outs_idx++]): (this->pb.val(linear_vals[prev_offset+j]) + round_keys[round_keys_offset++]);
+                auto s = j == 0? this->pb.val(sbox_outs[sbox_outs_idx]): (this->pb.val(linear_vals[prev_offset+j]) + round_keys[round_keys_offset++]);
 
                 for (uint32_t i = 0; i < this->num_branches; i++) {
                     auto temp = s * this->matrix_2[i][j];
@@ -331,7 +298,7 @@ public:
                 this->pb.val(linear_vals[offset+j]) = linear[j];
             }
 
-            round_squares_idx++;
+            sbox_outs_idx++;
         }
 
         for(; round_no <= 3+middle_rounds+2; round_no++) {
@@ -343,7 +310,7 @@ public:
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
 
-                this->generate_sbox_witness(prev_offset+j, round_keys_offset, round_squares_idx, sbox_outs_idx);
+                this->generate_sbox_witness(prev_offset+j, round_keys_offset, sbox_outs_idx);
 
                 auto s = this->pb.val(sbox_outs[sbox_outs_idx]);
 
@@ -352,7 +319,6 @@ public:
                     linear[i] = linear[i] + temp;
                 }
 
-                round_squares_idx++;
                 round_keys_offset++;
                 sbox_outs_idx++;
             }
@@ -368,13 +334,11 @@ public:
         for(uint32_t i = 0; i < this->num_branches; i++) {
             uint32_t k = offset + i;
 
-            this->generate_sbox_witness(prev_offset+i, round_keys_offset, round_squares_idx, sbox_outs_idx);
+            this->generate_sbox_witness(prev_offset+i, round_keys_offset, sbox_outs_idx);
 
             round_keys_offset++;
 
             this->pb.val(linear_vals[k]) = this->pb.val(sbox_outs[sbox_outs_idx++]) + round_keys[round_keys_offset++];
-
-            round_squares_idx++;
         }
 
         offset = linear_vals.size() - this->num_branches;
@@ -384,4 +348,77 @@ public:
         }
     }
 
+};
+
+template<typename FieldT>
+class SharkMimc_cube_gadget : public SharkMimc_gadget<FieldT> {
+private:
+    pb_variable_array<FieldT> round_squares;
+    uint32_t round_squares_constraint_idx = 0;
+    uint32_t round_squares_witness_idx = 0;
+public:
+    SharkMimc_cube_gadget(FieldT modulus, protoboard<FieldT> &in_pb, const pb_variable_array<FieldT> input,
+                     const std::string &in_annotation_prefix=""):
+            SharkMimc_gadget<FieldT>(modulus, in_pb, input, FMT(in_annotation_prefix, " SharkMimc_cube_gadget"))
+    {
+        round_squares.allocate(in_pb, 3 * this->num_branches + this->middle_rounds + 2 * this->num_branches + this->num_branches, FMT(in_annotation_prefix, " round_squares"));
+    }
+
+    void generate_sbox_constraint(uint32_t linear_vals_idx, uint32_t round_keys_offset,
+                                  uint32_t sbox_outs_idx) {
+        // Add round key
+        auto t = this->linear_vals[linear_vals_idx] + this->round_keys[round_keys_offset];
+
+        // S-box as x^3
+        this->pb.add_r1cs_constraint(
+                r1cs_constraint<FieldT>(t, t, round_squares[round_squares_constraint_idx]));
+        this->pb.add_r1cs_constraint(
+                r1cs_constraint<FieldT>(round_squares[round_squares_constraint_idx], t, this->sbox_outs[sbox_outs_idx]));
+
+        round_squares_constraint_idx++;
+    }
+
+    void generate_sbox_witness(uint32_t linear_vals_idx, uint32_t round_keys_offset,
+                               uint32_t sbox_outs_idx) {
+        auto t = this->pb.val(this->linear_vals[linear_vals_idx]) + this->round_keys[round_keys_offset];
+
+        // S-box as x^3
+        this->pb.val(round_squares[round_squares_witness_idx]) = t * t;
+        this->pb.val(this->sbox_outs[sbox_outs_idx]) = this->pb.val(round_squares[round_squares_witness_idx]) * t;
+
+        round_squares_witness_idx++;
+    }
+
+    void reset_indices() {
+        round_squares_constraint_idx = 0;
+        round_squares_witness_idx = 0;
+    }
+};
+
+
+template<typename FieldT>
+class SharkMimc_inverse_gadget : public SharkMimc_gadget<FieldT> {
+public:
+    SharkMimc_inverse_gadget(FieldT modulus, protoboard<FieldT> &in_pb, const pb_variable_array<FieldT> input,
+                          const std::string &in_annotation_prefix = "") :
+            SharkMimc_gadget<FieldT>(modulus, in_pb, input, FMT(in_annotation_prefix, " SharkMimc_inverse_gadget")) {
+    }
+
+    void generate_sbox_constraint(uint32_t linear_vals_idx, uint32_t round_keys_offset,
+                                  uint32_t sbox_outs_idx) {
+        // Add round key
+        auto t = this->linear_vals[linear_vals_idx] + this->round_keys[round_keys_offset];
+
+        // S-box as x^-1
+        this->pb.add_r1cs_constraint(
+                r1cs_constraint<FieldT>(t, this->sbox_outs[sbox_outs_idx], 1));
+    }
+
+    void generate_sbox_witness(uint32_t linear_vals_idx, uint32_t round_keys_offset,
+                               uint32_t sbox_outs_idx) {
+        auto t = this->pb.val(this->linear_vals[linear_vals_idx]) + this->round_keys[round_keys_offset];
+
+        // S-box as x^-1
+        this->pb.val(this->sbox_outs[sbox_outs_idx]) = t.inverse();
+    }
 };
