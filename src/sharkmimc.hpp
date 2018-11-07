@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <iostream>
+#include <chrono>
 
 #include "libsnark/zk_proof_systems/ppzksnark/r1cs_ppzksnark/r1cs_ppzksnark.hpp"
 #include "libsnark/common/default_types/r1cs_ppzksnark_pp.hpp"
@@ -8,6 +9,7 @@
 #include "libff/algebra/fields/field_utils.hpp"
 
 using namespace std;
+using namespace std::chrono;
 using namespace libsnark;
 
 template<typename FieldT>
@@ -100,18 +102,41 @@ public:
         }
     }
 
+    // Note: This is just for benchmarking purposes. It might affect the correctness or security
+    void prepare_matrix_all_1s(FieldT (&matrix)[num_branches][num_branches]) {
+        for(uint32_t i = 0; i < this->num_branches; i++) {
+            for (uint32_t j = 0; j < this->num_branches; j++) {
+                matrix[i][j] = FieldT::one();
+            }
+        }
+    }
+
+    // Note: This is just for benchmarking purposes. It might affect the correctness or security
+    void prepare_matrix_0s_1s(FieldT (&matrix)[num_branches][num_branches]) {
+        for(uint32_t i = 0; i < this->num_branches; i++) {
+            for (uint32_t j = 0; j < this->num_branches; j++) {
+                auto t = FieldT::random_element();
+                matrix[i][j] = t % 2 ? FieldT::one(): FieldT::zero();
+            }
+        }
+    }
+
     void prepare_matrix_1() {
         uint64_t x[num_branches] = {1, 2, 3, 4};
         uint64_t y[num_branches] = {5, 6, 7, 8};
-//        prepare_matrix(matrix_1, x, y);
-        prepare_matrix_random_vals(matrix_1);
+        prepare_matrix(matrix_1, x, y);
+//        prepare_matrix_random_vals(matrix_1);
+//        prepare_matrix_all_1s(matrix_1);
+//        prepare_matrix_0s_1s(matrix_1);
     }
 
     void prepare_matrix_2() {
         uint64_t x[num_branches] = {9, 10, 11, 12};
         uint64_t y[num_branches] = {13, 14, 15, 16};
-//        prepare_matrix(matrix_2, x, y);
-        prepare_matrix_random_vals(matrix_2);
+        prepare_matrix(matrix_2, x, y);
+//        prepare_matrix_random_vals(matrix_2);
+//        prepare_matrix_all_1s(matrix_2);
+//        prepare_matrix_0s_1s(matrix_2);
     }
 
     /*void prepare_round_keys() {
@@ -250,6 +275,11 @@ public:
             this->pb.val(sbox_vals[i]) = field_elems[i];
         }
 
+        duration<double> total_sbox_time(0);
+        duration<double> total_linear_time(0);
+        steady_clock::time_point begin;
+        steady_clock::time_point end;
+
         uint32_t round_no = 1;
         uint32_t round_keys_offset = 0;
         uint32_t round_squares_idx = 0;
@@ -263,14 +293,20 @@ public:
             vector<FieldT> linear(this->num_branches, 0);
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
-
+                begin = steady_clock::now();
                 this->generate_sbox_witness(prev_offset+j, round_keys_offset, round_squares_idx, sbox_outs_idx);
+                end = steady_clock::now();
+                total_sbox_time += duration_cast<duration<double>>(end - begin);
+
                 auto s = this->pb.val(sbox_outs[sbox_outs_idx]);
 
+                begin = steady_clock::now();
                 for (uint32_t i = 0; i < this->num_branches; i++) {
                     auto temp = s * this->matrix_2[i][j];
                     linear[i] = linear[i] + temp;
                 }
+                end = steady_clock::now();
+                total_linear_time += duration_cast<duration<double>>(end - begin);
 
                 round_squares_idx++;
                 round_keys_offset++;
@@ -287,12 +323,16 @@ public:
             uint32_t offset = round_no * this->num_branches;
             uint32_t prev_offset = offset - this->num_branches;
 
+            begin = steady_clock::now();
             this->generate_sbox_witness(prev_offset, round_keys_offset, round_squares_idx, sbox_outs_idx);
+            end = steady_clock::now();
+            total_sbox_time += duration_cast<duration<double>>(end - begin);
 
             round_keys_offset++;
 
             vector<FieldT> linear(this->num_branches, 0);
 
+            begin = steady_clock::now();
             for(uint32_t j = 0; j < this->num_branches; j++) {
                 auto s = j == 0? this->pb.val(sbox_outs[sbox_outs_idx++]): (this->pb.val(sbox_vals[prev_offset+j]) + round_keys[round_keys_offset++]);
 
@@ -301,6 +341,8 @@ public:
                     linear[i] = linear[i] + temp;
                 }
             }
+            end = steady_clock::now();
+            total_linear_time += duration_cast<duration<double>>(end - begin);
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
                 this->pb.val(sbox_vals[offset+j]) = linear[j];
@@ -318,14 +360,20 @@ public:
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
 
+                begin = steady_clock::now();
                 this->generate_sbox_witness(prev_offset+j, round_keys_offset, round_squares_idx, sbox_outs_idx);
+                end = steady_clock::now();
+                total_sbox_time += duration_cast<duration<double>>(end - begin);
 
                 auto s = this->pb.val(sbox_outs[sbox_outs_idx]);
 
+                begin = steady_clock::now();
                 for (uint32_t i = 0; i < this->num_branches; i++) {
                     auto temp = s * this->matrix_2[i][j];
                     linear[i] = linear[i] + temp;
                 }
+                end = steady_clock::now();
+                total_linear_time += duration_cast<duration<double>>(end - begin);
 
                 round_squares_idx++;
                 round_keys_offset++;
@@ -343,11 +391,17 @@ public:
         for(uint32_t i = 0; i < this->num_branches; i++) {
             uint32_t k = offset + i;
 
+            begin = steady_clock::now();
             this->generate_sbox_witness(prev_offset+i, round_keys_offset, round_squares_idx, sbox_outs_idx);
+            end = steady_clock::now();
+            total_sbox_time += duration_cast<duration<double>>(end - begin);
 
             round_keys_offset++;
 
+            begin = steady_clock::now();
             this->pb.val(sbox_vals[k]) = this->pb.val(sbox_outs[sbox_outs_idx++]) + round_keys[round_keys_offset++];
+            end = steady_clock::now();
+            total_linear_time += duration_cast<duration<double>>(end - begin);
 
             round_squares_idx++;
         }
@@ -358,6 +412,8 @@ public:
             this->pb.val(output[i]) = this->pb.val(sbox_vals[offset+i]);
         }
 
+        cout << "Total S-box time (seconds): " << total_sbox_time.count() << endl;
+        cout << "Total linear layer time (seconds): " << total_linear_time.count() << endl;
     }
 
 };

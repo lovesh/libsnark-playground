@@ -47,9 +47,6 @@ int main() {
     auto i2 = FieldT("21871881226116355513319084168586976250335411806112527735069209751513595455673");
     auto i3 = FieldT("55049861378429053168722197095693172831329974911537953231866155060049976290");
 
-    steady_clock::time_point mid = steady_clock::now();
-    tc += duration_cast<duration<double>>(mid - begin);
-
     /*input.resize(4);
     input.fill_with_field_elements(pb, field_elems);*/
     pb.val(input[0]) = i0;
@@ -58,6 +55,9 @@ int main() {
     pb.val(input[3]) = i3;
 
     g.generate_r1cs_witness();
+
+    steady_clock::time_point mid = steady_clock::now();
+    tc += duration_cast<duration<double>>(mid - begin);
 
     cout << "Satisfied status: " << pb.is_satisfied() << endl;
     /*cout << "Result: " << endl;
