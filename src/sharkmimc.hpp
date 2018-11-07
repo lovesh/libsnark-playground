@@ -275,11 +275,6 @@ public:
             this->pb.val(sbox_vals[i]) = field_elems[i];
         }
 
-        duration<double> total_sbox_time(0);
-        duration<double> total_linear_time(0);
-        steady_clock::time_point begin;
-        steady_clock::time_point end;
-
         uint32_t round_no = 1;
         uint32_t round_keys_offset = 0;
         uint32_t round_squares_idx = 0;
@@ -293,20 +288,14 @@ public:
             vector<FieldT> linear(this->num_branches, 0);
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
-                begin = steady_clock::now();
                 this->generate_sbox_witness(prev_offset+j, round_keys_offset, round_squares_idx, sbox_outs_idx);
-                end = steady_clock::now();
-                total_sbox_time += duration_cast<duration<double>>(end - begin);
 
                 auto s = this->pb.val(sbox_outs[sbox_outs_idx]);
 
-                begin = steady_clock::now();
                 for (uint32_t i = 0; i < this->num_branches; i++) {
                     auto temp = s * this->matrix_2[i][j];
                     linear[i] = linear[i] + temp;
                 }
-                end = steady_clock::now();
-                total_linear_time += duration_cast<duration<double>>(end - begin);
 
                 round_squares_idx++;
                 round_keys_offset++;
@@ -323,16 +312,12 @@ public:
             uint32_t offset = round_no * this->num_branches;
             uint32_t prev_offset = offset - this->num_branches;
 
-            begin = steady_clock::now();
             this->generate_sbox_witness(prev_offset, round_keys_offset, round_squares_idx, sbox_outs_idx);
-            end = steady_clock::now();
-            total_sbox_time += duration_cast<duration<double>>(end - begin);
 
             round_keys_offset++;
 
             vector<FieldT> linear(this->num_branches, 0);
 
-            begin = steady_clock::now();
             for(uint32_t j = 0; j < this->num_branches; j++) {
                 auto s = j == 0? this->pb.val(sbox_outs[sbox_outs_idx++]): (this->pb.val(sbox_vals[prev_offset+j]) + round_keys[round_keys_offset++]);
 
@@ -341,8 +326,6 @@ public:
                     linear[i] = linear[i] + temp;
                 }
             }
-            end = steady_clock::now();
-            total_linear_time += duration_cast<duration<double>>(end - begin);
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
                 this->pb.val(sbox_vals[offset+j]) = linear[j];
@@ -360,20 +343,14 @@ public:
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
 
-                begin = steady_clock::now();
                 this->generate_sbox_witness(prev_offset+j, round_keys_offset, round_squares_idx, sbox_outs_idx);
-                end = steady_clock::now();
-                total_sbox_time += duration_cast<duration<double>>(end - begin);
 
                 auto s = this->pb.val(sbox_outs[sbox_outs_idx]);
 
-                begin = steady_clock::now();
                 for (uint32_t i = 0; i < this->num_branches; i++) {
                     auto temp = s * this->matrix_2[i][j];
                     linear[i] = linear[i] + temp;
                 }
-                end = steady_clock::now();
-                total_linear_time += duration_cast<duration<double>>(end - begin);
 
                 round_squares_idx++;
                 round_keys_offset++;
@@ -391,17 +368,11 @@ public:
         for(uint32_t i = 0; i < this->num_branches; i++) {
             uint32_t k = offset + i;
 
-            begin = steady_clock::now();
             this->generate_sbox_witness(prev_offset+i, round_keys_offset, round_squares_idx, sbox_outs_idx);
-            end = steady_clock::now();
-            total_sbox_time += duration_cast<duration<double>>(end - begin);
 
             round_keys_offset++;
 
-            begin = steady_clock::now();
             this->pb.val(sbox_vals[k]) = this->pb.val(sbox_outs[sbox_outs_idx++]) + round_keys[round_keys_offset++];
-            end = steady_clock::now();
-            total_linear_time += duration_cast<duration<double>>(end - begin);
 
             round_squares_idx++;
         }
@@ -411,9 +382,6 @@ public:
         for(uint32_t i = 0; i < this->num_branches; i++) {
             this->pb.val(output[i]) = this->pb.val(sbox_vals[offset+i]);
         }
-
-        cout << "Total S-box time (seconds): " << total_sbox_time.count() << endl;
-        cout << "Total linear layer time (seconds): " << total_linear_time.count() << endl;
     }
 
 };
