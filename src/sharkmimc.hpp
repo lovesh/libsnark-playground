@@ -301,12 +301,12 @@ public:
             sbox_outs_idx++;
         }
 
-        vector<FieldT> linear(this->num_branches, 0);
-
         for(; round_no <= 3+middle_rounds+2; round_no++) {
 
             uint32_t offset = round_no * this->num_branches;
             uint32_t prev_offset = offset - this->num_branches;
+
+            vector<FieldT> linear(this->num_branches, 0);
 
             for(uint32_t j = 0; j < this->num_branches; j++) {
 
