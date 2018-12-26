@@ -145,3 +145,21 @@ target_include_directories(
         ${DEPENDS_DIR}/libsnark
         ${DEPENDS_DIR}/libsnark/depends/libfqfft
 )
+
+add_executable(
+        pedersen-commitment
+
+        pedersen-commitment.cpp
+)
+target_link_libraries(
+        pedersen-commitment
+
+        snark
+)
+target_include_directories(
+        pedersen-commitment
+
+        PUBLIC
+        ${DEPENDS_DIR}/libsnark
+        ${DEPENDS_DIR}/libsnark/depends/libfqfft
+)

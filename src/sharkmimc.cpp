@@ -26,13 +26,13 @@ void test_SharkMiMC() {
     auto i2 = FieldT("21871881226116355513319084168586976250335411806112527735069209751513595455673");
     auto i3 = FieldT("55049861378429053168722197095693172831329974911537953231866155060049976290");
 
-    G<FieldT> g_inv(FieldT::mod, pb, input, "Sharkmimc inverse gadget");
+    G<FieldT> gadg(FieldT::mod, pb, input, "Sharkmimc inverse gadget");
 
-    g_inv.prepare_round_constants();
-    g_inv.prepare_matrix_1();
-    g_inv.prepare_matrix_2();
-    g_inv.prepare_round_keys();
-    g_inv.generate_r1cs_constraints();
+    gadg.prepare_round_constants();
+    gadg.prepare_matrix_1();
+    gadg.prepare_matrix_2();
+    gadg.prepare_round_keys();
+    gadg.generate_r1cs_constraints();
 
     cout << "Number of constraints: " << pb.num_constraints() << endl;
 
@@ -53,17 +53,21 @@ void test_SharkMiMC() {
     pb.val(input[2]) = i2;
     pb.val(input[3]) = i3;
 
-    g_inv.generate_r1cs_witness();
+    gadg.generate_r1cs_witness();
 
     steady_clock::time_point mid = steady_clock::now();
     tc += duration_cast<duration<double>>(mid - begin);
 
     cout << "Satisfied status: " << pb.is_satisfied() << endl;
+    auto output = gadg.result();
+    for(uint32_t i = 0; i < 4; i++) {
+        cout << "Output: " << pb.val(output[i]) << endl;
+    }
     /*cout << "Result: " << endl;
-    cout << pb.val(g_inv.result()[0]) << endl;
-    cout << pb.val(g_inv.result()[1]) << endl;
-    cout << pb.val(g_inv.result()[2]) << endl;
-    cout << pb.val(g_inv.result()[3]) << endl;*/
+    cout << pb.val(gadg.result()[0]) << endl;
+    cout << pb.val(gadg.result()[1]) << endl;
+    cout << pb.val(gadg.result()[2]) << endl;
+    cout << pb.val(gadg.result()[3]) << endl;*/
 
     const r1cs_ppzksnark_proof<default_r1cs_ppzksnark_pp> proof = r1cs_ppzksnark_prover<default_r1cs_ppzksnark_pp>(
             keypair.pk, pb.primary_input(), pb.auxiliary_input());
